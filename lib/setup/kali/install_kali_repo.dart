@@ -20,17 +20,32 @@ Pin-Priority: 50
   try {
     // Download the key
     final tempKeyPath = '/tmp/kali-key.asc';
-    final downloadKey = await Process.run('wget', ['-O', tempKeyPath, keyUrl]);
-    if (downloadKey.exitCode != 0) return false;
+    ProcessResult downloadKey = await Process.run('sudo', ['wget', '-O', tempKeyPath, keyUrl]);
+    if (downloadKey.exitCode != 0) {
+      await Process.run('sudo', ['rm', tempKeyPath]);
+      downloadKey = await Process.run('sudo', ['wget', '-O', tempKeyPath, keyUrl]);
+      if (downloadKey.exitCode != 0) return false;
+    }
 
     // Convert ASCII key to binary GPG format
-    final convertKey = await Process.run('gpg', [
+    ProcessResult convertKey = await Process.run('sudo', [
+      'gpg',
       '--dearmor',
       '--output',
       keyringPath,
       tempKeyPath,
     ]);
-    if (convertKey.exitCode != 0) return false;
+    if (convertKey.exitCode != 0) {
+      await Process.run('sudo', ['rm', keyringPath]);
+      convertKey = await Process.run('sudo', [
+        'gpg',
+        '--dearmor',
+        '--output',
+        keyringPath,
+        tempKeyPath,
+      ]);
+      if (convertKey.exitCode != 0) return false;
+    }
 
     // Write Kali repo
     await File(repoPath).writeAsString(repoContent);
@@ -39,7 +54,7 @@ Pin-Priority: 50
     await File(pinPath).writeAsString(pinContent);
 
     // Update apt
-    final update = await Process.run('apt', ['update']);
+    final update = await Process.run('sudo', ['apt', 'update']);
     if (update.exitCode != 0) return false;
 
     return true;

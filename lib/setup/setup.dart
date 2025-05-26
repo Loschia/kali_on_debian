@@ -8,6 +8,7 @@ Future<bool> setup() async {
     print('If you still see this error, verify APT functionality and install Flatpak manually.');
     return false;
   }
+
   final checkKali = await checkInstalledKali();
   if (!checkKali) {
     print('There was an error while adding the Kali repository.');
