@@ -86,7 +86,7 @@ You are responsible for your own actions. The author is **not liable for any dam
 The project is under active development. Here's what's currently implemented:
 
 ### ✔ Completed Features
-- Interactive CLI for selecting `kali-tools-802-11`, `kali-tools-bluetooth` and `kali-tools-crypto-stego`
+- Interactive CLI for selecting `kali-tools-802-11`, `kali-tools-bluetooth`, `kali-tools-crypto-stego`, `kali-tools-database`, `kali-tools-detect`, `kali-tools-exploitation` and `kali-tools-forensics`
 - Package mapping, validation, and menu interface
 - Support for selection via ranges, help screen, “select all”, and “remove all”
 - Script compilation into `kali_on_debian.sh`
@@ -94,6 +94,10 @@ The project is under active development. Here's what's currently implemented:
   - `kali-tools-802-11` ✅ (fully implemented)
   - `kali-tools-bluetooth` ⚠️ (logic ready, not visible yet)
   - `kali-tools-crypto-stego` ⚠️ (logic ready, not visible yet)
+  - `kali-tools-database` ⚠️ (logic ready, not visible yet)
+  - `kali-tools-detect` ⚠️ (logic ready, not visible yet)
+  - `kali-tools-exploitation` ⚠️ (logic ready, not visible yet)
+  - `kali-tools-forensics` ⚠️ (logic ready, not visible yet)
 
 ### 🔧 In Progress
 - APT tool installation support
