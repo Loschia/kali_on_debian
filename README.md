@@ -11,11 +11,14 @@
 
 ## 🚀 Overview
 
-`kali_on_debian` is a command-line tool that allows you to install Kali Linux hacking tools **selectively** on any Debian-based distribution (Debian, Ubuntu, Pop!_OS, etc.), **without replacing your desktop environment or altering your core system**.
+`kali_on_debian` is a command-line tool that allows you to install Kali Linux hacking tools **selectively** on any Debian-based distribution (Debian, Ubuntu, etc.), **without replacing your desktop environment or altering your core system**.
 
 It provides an **interactive terminal UI** that helps you choose what to install, where to install it from (APT, Flatpak, or Kali’s official repositories), and manages everything for you with minimal risk.
 
 You can use the latest compiled version directly (`kali_on_debian.sh`) or run the Dart source code yourself.
+
+**Note:**
+Some packages appear in multiple groups, similar to how Kali Linux repositories are structured. Certain groups may seem small because they include other subgroups within them (for example, `kali-tools-wireless` contains `kali-tools-802-11`, `kali-tools-bluetooth`, `kali-tools-rfid`, and `kali-tools-sdr`). In such cases, I decided not to include the nested subgroups separately. Therefore, groups like wireless do not list their contained subgroups such as 802.11, bluetooth, and others.
 
 ---
 
@@ -86,24 +89,17 @@ You are responsible for your own actions. The author is **not liable for any dam
 The project is under active development. Here's what's currently implemented:
 
 ### ✔ Completed Features
-- Interactive CLI for selecting `kali-tools-802-11`, `kali-tools-bluetooth`, `kali-tools-crypto-stego`, `kali-tools-database`, `kali-tools-detect`, `kali-tools-exploitation` and `kali-tools-forensics`
+- Interactive CLI for selecting for all kali-tools category
 - Package mapping, validation, and menu interface
 - Support for selection via ranges, help screen, “select all”, and “remove all”
 - Script compilation into `kali_on_debian.sh`
 - Interactive CLI for:
   - `kali-tools-802-11` ✅ (fully implemented)
-  - `kali-tools-bluetooth` ⚠️ (logic ready, not visible yet)
-  - `kali-tools-crypto-stego` ⚠️ (logic ready, not visible yet)
-  - `kali-tools-database` ⚠️ (logic ready, not visible yet)
-  - `kali-tools-detect` ⚠️ (logic ready, not visible yet)
-  - `kali-tools-exploitation` ⚠️ (logic ready, not visible yet)
-  - `kali-tools-forensics` ⚠️ (logic ready, not visible yet)
 
 ### 🔧 In Progress
 - APT tool installation support
 - Flatpak tool installation support
 - Kali tool installation support
-- More tool categories (web, exploitation, recon, etc.)
 - Persistent configuration and saved selections
 
 > Every `kali_on_debian.sh` you download is automatically compiled from the latest commit, so you can use it directly without needing to compile it yourself.
