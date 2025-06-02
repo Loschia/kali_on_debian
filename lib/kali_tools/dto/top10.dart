@@ -1,11 +1,11 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsTop10Enum {
-  aircrack_ng,
+  aircrackNg,
   burpsuite,
   hydra,
   john,
-  metasploit_framework,
+  metasploitFramework,
   netexec,
   nmap,
   responder,
@@ -14,11 +14,11 @@ enum KaliToolsTop10Enum {
 }
 
 Map<KaliToolsTop10Enum, String> _kaliToolsTop10Map = {
-  KaliToolsTop10Enum.aircrack_ng: 'aircrack-ng',
+  KaliToolsTop10Enum.aircrackNg: 'aircrack-ng',
   KaliToolsTop10Enum.burpsuite: 'burpsuite',
   KaliToolsTop10Enum.hydra: 'hydra',
   KaliToolsTop10Enum.john: 'john',
-  KaliToolsTop10Enum.metasploit_framework: 'metasploit-framework',
+  KaliToolsTop10Enum.metasploitFramework: 'metasploit-framework',
   KaliToolsTop10Enum.netexec: 'netexec',
   KaliToolsTop10Enum.nmap: 'nmap',
   KaliToolsTop10Enum.responder: 'responder',
@@ -35,9 +35,8 @@ extension KaliToolsTop10EnumExt on KaliToolsTop10Enum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsTop10ToInstall() =>
-    selectToolsToInstall<KaliToolsTop10Enum>(
-      groupName: 'kali-tools-top10',
-      values: KaliToolsTop10Enum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsTop10ToInstall() => selectToolsToInstall<KaliToolsTop10Enum>(
+  groupName: 'kali-tools-top10',
+  values: KaliToolsTop10Enum.values,
+  packageNameGetter: (e) => e.package,
+);

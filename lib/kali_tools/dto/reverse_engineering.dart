@@ -1,35 +1,35 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsReverseEngineeringEnum {
   apktool,
-  bytecode_viewer,
+  bytecodeViewer,
   clang,
   dex2jar,
-  edb_debugger,
+  edbDebugger,
   jadx,
   javasnoop,
-  jd_gui,
-  metasploit_framework,
+  jdGui,
+  metasploitFramework,
   ollydbg,
   radare2,
-  rizin_cutter,
-  rz_ghidra,
+  rizinCutter,
+  rzGhidra,
 }
 
 Map<KaliToolsReverseEngineeringEnum, String> _kaliToolsReverseEngineeringMap = {
   KaliToolsReverseEngineeringEnum.apktool: 'apktool',
-  KaliToolsReverseEngineeringEnum.bytecode_viewer: 'bytecode-viewer',
+  KaliToolsReverseEngineeringEnum.bytecodeViewer: 'bytecode-viewer',
   KaliToolsReverseEngineeringEnum.clang: 'clang',
   KaliToolsReverseEngineeringEnum.dex2jar: 'dex2jar',
-  KaliToolsReverseEngineeringEnum.edb_debugger: 'edb-debugger',
+  KaliToolsReverseEngineeringEnum.edbDebugger: 'edb-debugger',
   KaliToolsReverseEngineeringEnum.jadx: 'jadx',
   KaliToolsReverseEngineeringEnum.javasnoop: 'javasnoop',
-  KaliToolsReverseEngineeringEnum.jd_gui: 'jd-gui',
-  KaliToolsReverseEngineeringEnum.metasploit_framework: 'metasploit-framework',
+  KaliToolsReverseEngineeringEnum.jdGui: 'jd-gui',
+  KaliToolsReverseEngineeringEnum.metasploitFramework: 'metasploit-framework',
   KaliToolsReverseEngineeringEnum.ollydbg: 'ollydbg',
   KaliToolsReverseEngineeringEnum.radare2: 'radare2',
-  KaliToolsReverseEngineeringEnum.rizin_cutter: 'rizin-cutter',
-  KaliToolsReverseEngineeringEnum.rz_ghidra: 'rz-ghidra',
+  KaliToolsReverseEngineeringEnum.rizinCutter: 'rizin-cutter',
+  KaliToolsReverseEngineeringEnum.rzGhidra: 'rz-ghidra',
 };
 
 extension KaliToolsReverseEngineeringEnumExt on KaliToolsReverseEngineeringEnum {
@@ -41,7 +41,7 @@ extension KaliToolsReverseEngineeringEnumExt on KaliToolsReverseEngineeringEnum 
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsReverseEngineeringToInstall() =>
+Future<void> selectKaliToolsReverseEngineeringToInstall() =>
     selectToolsToInstall<KaliToolsReverseEngineeringEnum>(
       groupName: 'kali-tools-reverse-engineering',
       values: KaliToolsReverseEngineeringEnum.values,

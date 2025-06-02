@@ -1,9 +1,9 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsRFIDEnum {
   gnuradio,
-  libfreefare_bin,
-  libnfc_bin,
+  libfreefareBin,
+  libnfcBin,
   mfcuk,
   mfoc,
   mfterm,
@@ -13,8 +13,8 @@ enum KaliToolsRFIDEnum {
 
 Map<KaliToolsRFIDEnum, String> _kaliToolsRFIDMap = {
   KaliToolsRFIDEnum.gnuradio: 'gnuradio',
-  KaliToolsRFIDEnum.libfreefare_bin: 'libfreefare-bin',
-  KaliToolsRFIDEnum.libnfc_bin: 'libnfc-bin',
+  KaliToolsRFIDEnum.libfreefareBin: 'libfreefare-bin',
+  KaliToolsRFIDEnum.libnfcBin: 'libnfc-bin',
   KaliToolsRFIDEnum.mfcuk: 'mfcuk',
   KaliToolsRFIDEnum.mfoc: 'mfoc',
   KaliToolsRFIDEnum.mfterm: 'mfterm',
@@ -31,9 +31,8 @@ extension KaliToolsRFIDEnumExt on KaliToolsRFIDEnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsRFIDToInstall() =>
-    selectToolsToInstall<KaliToolsRFIDEnum>(
-      groupName: 'kali-tools-rfid',
-      values: KaliToolsRFIDEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsRFIDToInstall() => selectToolsToInstall<KaliToolsRFIDEnum>(
+  groupName: 'kali-tools-rfid',
+  values: KaliToolsRFIDEnum.values,
+  packageNameGetter: (e) => e.package,
+);

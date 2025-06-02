@@ -20,6 +20,8 @@ You can use the latest compiled version directly (`kali_on_debian.sh`) or run th
 **Note:**
 Some packages appear in multiple groups, similar to how Kali Linux repositories are structured. Certain groups may seem small because they include other subgroups within them (for example, `kali-tools-wireless` contains `kali-tools-802-11`, `kali-tools-bluetooth`, `kali-tools-rfid`, and `kali-tools-sdr`). In such cases, I decided not to include the nested subgroups separately. Therefore, groups like wireless do not list their contained subgroups such as 802.11, bluetooth, and others.
 
+This script clear your console. If you do not want to clear your console, open a new tab for this script.
+
 ---
 
 ## ⚙️ How to Install
@@ -92,15 +94,14 @@ The project is under active development. Here's what's currently implemented:
 - Interactive CLI for selecting for all kali-tools category
 - Package mapping, validation, and menu interface
 - Support for selection via ranges, help screen, “select all”, and “remove all”
-- Script compilation into `kali_on_debian.sh`
-- Interactive CLI for:
-  - `kali-tools-802-11` ✅ (fully implemented)
+- Script compiled latest version: `kali_on_debian.sh`
+- Interactive CLI for `kali-tools-*` ✅ (fully implemented)
 
 ### 🔧 In Progress
 - APT tool installation support
 - Flatpak tool installation support
 - Kali tool installation support
-- Persistent configuration and saved selections
+- Versioning from each package manager
 
 > Every `kali_on_debian.sh` you download is automatically compiled from the latest commit, so you can use it directly without needing to compile it yourself.
 

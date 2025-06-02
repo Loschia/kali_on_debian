@@ -1,4 +1,4 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsReportingEnum {
   cutycapt,
@@ -31,9 +31,8 @@ extension KaliToolsReportingEnumExt on KaliToolsReportingEnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsReportingToInstall() =>
-    selectToolsToInstall<KaliToolsReportingEnum>(
-      groupName: 'kali-tools-reporting',
-      values: KaliToolsReportingEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsReportingToInstall() => selectToolsToInstall<KaliToolsReportingEnum>(
+  groupName: 'kali-tools-reporting',
+  values: KaliToolsReportingEnum.values,
+  packageNameGetter: (e) => e.package,
+);

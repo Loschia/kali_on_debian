@@ -1,12 +1,12 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsBluetoothEnum {
-  blue_hydra,
+  blueHydra,
   bluelog,
   blueranger,
   bluesnarfer,
   bluez,
-  bluez_hcidump,
+  bluezHcidump,
   btscanner,
   crackle,
   redfang,
@@ -15,12 +15,12 @@ enum KaliToolsBluetoothEnum {
 }
 
 Map<KaliToolsBluetoothEnum, String> _kaliToolsBluetoothMap = {
-  KaliToolsBluetoothEnum.blue_hydra: 'blue-hydra',
+  KaliToolsBluetoothEnum.blueHydra: 'blue-hydra',
   KaliToolsBluetoothEnum.bluelog: 'bluelog',
   KaliToolsBluetoothEnum.blueranger: 'blueranger',
   KaliToolsBluetoothEnum.bluesnarfer: 'bluesnarfer',
   KaliToolsBluetoothEnum.bluez: 'bluez',
-  KaliToolsBluetoothEnum.bluez_hcidump: 'bluez-hcidump',
+  KaliToolsBluetoothEnum.bluezHcidump: 'bluez-hcidump',
   KaliToolsBluetoothEnum.btscanner: 'btscanner',
   KaliToolsBluetoothEnum.crackle: 'crackle',
   KaliToolsBluetoothEnum.redfang: 'redfang',
@@ -37,9 +37,8 @@ extension KaliToolsBluetoothEnumExt on KaliToolsBluetoothEnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsBluetoothToInstall() =>
-    selectToolsToInstall<KaliToolsBluetoothEnum>(
-      groupName: 'kali-tools-bluetooth',
-      values: KaliToolsBluetoothEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsBluetoothToInstall() => selectToolsToInstall<KaliToolsBluetoothEnum>(
+  groupName: 'kali-tools-bluetooth',
+  values: KaliToolsBluetoothEnum.values,
+  packageNameGetter: (e) => e.package,
+);

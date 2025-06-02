@@ -1,4 +1,4 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsWindowsResourcesEnum {
   dbd,
@@ -6,17 +6,17 @@ enum KaliToolsWindowsResourcesEnum {
   heartleech,
   hyperion,
   mimikatz,
-  ncat_w32,
+  ncatW32,
   ollydbg,
   powercat,
   regripper,
   sbd,
-  secure_socket_funneling_windows_binaries,
+  secureSocketFunnelingWindowsBinaries,
   shellter,
   tftpd32,
   wce,
-  windows_binaries,
-  windows_privesc_check,
+  windowsBinaries,
+  windowsPrivescCheck,
 }
 
 Map<KaliToolsWindowsResourcesEnum, String> _kaliToolsWindowsResourcesMap = {
@@ -25,18 +25,18 @@ Map<KaliToolsWindowsResourcesEnum, String> _kaliToolsWindowsResourcesMap = {
   KaliToolsWindowsResourcesEnum.heartleech: 'heartleech',
   KaliToolsWindowsResourcesEnum.hyperion: 'hyperion',
   KaliToolsWindowsResourcesEnum.mimikatz: 'mimikatz',
-  KaliToolsWindowsResourcesEnum.ncat_w32: 'ncat-w32',
+  KaliToolsWindowsResourcesEnum.ncatW32: 'ncat-w32',
   KaliToolsWindowsResourcesEnum.ollydbg: 'ollydbg',
   KaliToolsWindowsResourcesEnum.powercat: 'powercat',
   KaliToolsWindowsResourcesEnum.regripper: 'regripper',
   KaliToolsWindowsResourcesEnum.sbd: 'sbd',
-  KaliToolsWindowsResourcesEnum.secure_socket_funneling_windows_binaries:
+  KaliToolsWindowsResourcesEnum.secureSocketFunnelingWindowsBinaries:
       'secure-socket-funneling-windows-binaries',
   KaliToolsWindowsResourcesEnum.shellter: 'shellter',
   KaliToolsWindowsResourcesEnum.tftpd32: 'tftpd32',
   KaliToolsWindowsResourcesEnum.wce: 'wce',
-  KaliToolsWindowsResourcesEnum.windows_binaries: 'windows-binaries',
-  KaliToolsWindowsResourcesEnum.windows_privesc_check: 'windows-privesc-check',
+  KaliToolsWindowsResourcesEnum.windowsBinaries: 'windows-binaries',
+  KaliToolsWindowsResourcesEnum.windowsPrivescCheck: 'windows-privesc-check',
 };
 
 extension KaliToolsWindowsResourcesEnumExt on KaliToolsWindowsResourcesEnum {
@@ -48,7 +48,7 @@ extension KaliToolsWindowsResourcesEnumExt on KaliToolsWindowsResourcesEnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsWindowsResourcesToInstall() =>
+Future<void> selectKaliToolsWindowsResourcesToInstall() =>
     selectToolsToInstall<KaliToolsWindowsResourcesEnum>(
       groupName: 'kali-tools-windows-resources',
       values: KaliToolsWindowsResourcesEnum.values,

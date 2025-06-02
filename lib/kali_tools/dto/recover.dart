@@ -1,4 +1,4 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsRecoverEnum {
   ddrescue,
@@ -7,7 +7,7 @@ enum KaliToolsRecoverEnum {
   myrescue,
   recoverdm,
   recoverjpeg,
-  scrounge_ntfs,
+  scroungeNtfs,
   undbx,
 }
 
@@ -18,7 +18,7 @@ Map<KaliToolsRecoverEnum, String> _kaliToolsRecoverMap = {
   KaliToolsRecoverEnum.myrescue: 'myrescue',
   KaliToolsRecoverEnum.recoverdm: 'recoverdm',
   KaliToolsRecoverEnum.recoverjpeg: 'recoverjpeg',
-  KaliToolsRecoverEnum.scrounge_ntfs: 'scrounge-ntfs',
+  KaliToolsRecoverEnum.scroungeNtfs: 'scrounge-ntfs',
   KaliToolsRecoverEnum.undbx: 'undbx',
 };
 
@@ -31,9 +31,8 @@ extension KaliToolsRecoverEnumExt on KaliToolsRecoverEnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsRecoverToInstall() =>
-    selectToolsToInstall<KaliToolsRecoverEnum>(
-      groupName: 'kali-tools-recover',
-      values: KaliToolsRecoverEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsRecoverToInstall() => selectToolsToInstall<KaliToolsRecoverEnum>(
+  groupName: 'kali-tools-recover',
+  values: KaliToolsRecoverEnum.values,
+  packageNameGetter: (e) => e.package,
+);

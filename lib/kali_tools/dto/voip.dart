@@ -1,4 +1,4 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsVOIPEnum {
   enumiax,
@@ -7,7 +7,7 @@ enum KaliToolsVOIPEnum {
   libfindrtp,
   nmap,
   ohrwurm,
-  protos_sip,
+  protosSip,
   rtpbreak,
   rtpflood,
   rtpinsertsound,
@@ -28,7 +28,7 @@ Map<KaliToolsVOIPEnum, String> _kaliToolsVOIPMap = {
   KaliToolsVOIPEnum.libfindrtp: 'libfindrtp',
   KaliToolsVOIPEnum.nmap: 'nmap',
   KaliToolsVOIPEnum.ohrwurm: 'ohrwurm',
-  KaliToolsVOIPEnum.protos_sip: 'protos-sip',
+  KaliToolsVOIPEnum.protosSip: 'protos-sip',
   KaliToolsVOIPEnum.rtpbreak: 'rtpbreak',
   KaliToolsVOIPEnum.rtpflood: 'rtpflood',
   KaliToolsVOIPEnum.rtpinsertsound: 'rtpinsertsound',
@@ -51,9 +51,8 @@ extension KaliToolsVOIPEnumExt on KaliToolsVOIPEnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsVOIPToInstall() =>
-    selectToolsToInstall<KaliToolsVOIPEnum>(
-      groupName: 'kali-tools-voip',
-      values: KaliToolsVOIPEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsVOIPToInstall() => selectToolsToInstall<KaliToolsVOIPEnum>(
+  groupName: 'kali-tools-voip',
+  values: KaliToolsVOIPEnum.values,
+  packageNameGetter: (e) => e.package,
+);

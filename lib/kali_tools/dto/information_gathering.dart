@@ -1,8 +1,8 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsInformationGatheringEnum {
-  Otrace,
-  arping_iputils_arping,
+  otrace,
+  arpingIputilsArping,
   braa,
   dmitry,
   dnsenum,
@@ -17,7 +17,7 @@ enum KaliToolsInformationGatheringEnum {
   fragrouter,
   ftester,
   hping3,
-  ike_scan,
+  ikeScan,
   intrace,
   irpas,
   lbd,
@@ -33,16 +33,16 @@ enum KaliToolsInformationGatheringEnum {
   onesixtyone,
   p0f,
   qsslcaudit,
-  recon_ng,
+  reconNg,
   smbmap,
-  smtp_user_enum,
+  smtpUserEnum,
   snmpcheck,
   ssldump,
   sslh,
   sslscan,
   sslyze,
   swaks,
-  thc_ipv6,
+  thcIpv6,
   theharvester,
   tlssled,
   twofi,
@@ -53,8 +53,8 @@ enum KaliToolsInformationGatheringEnum {
 }
 
 Map<KaliToolsInformationGatheringEnum, String> _kaliToolsInformationGatheringMap = {
-  KaliToolsInformationGatheringEnum.Otrace: '0trace',
-  KaliToolsInformationGatheringEnum.arping_iputils_arping: 'arping | iputils-arping',
+  KaliToolsInformationGatheringEnum.otrace: '0trace',
+  KaliToolsInformationGatheringEnum.arpingIputilsArping: 'arping | iputils-arping',
   KaliToolsInformationGatheringEnum.braa: 'braa',
   KaliToolsInformationGatheringEnum.dmitry: 'dmitry',
   KaliToolsInformationGatheringEnum.dnsenum: 'dnsenum',
@@ -69,7 +69,7 @@ Map<KaliToolsInformationGatheringEnum, String> _kaliToolsInformationGatheringMap
   KaliToolsInformationGatheringEnum.fragrouter: 'fragrouter',
   KaliToolsInformationGatheringEnum.ftester: 'ftester',
   KaliToolsInformationGatheringEnum.hping3: 'hping3',
-  KaliToolsInformationGatheringEnum.ike_scan: 'ike-scan',
+  KaliToolsInformationGatheringEnum.ikeScan: 'ike-scan',
   KaliToolsInformationGatheringEnum.intrace: 'intrace',
   KaliToolsInformationGatheringEnum.irpas: 'irpas',
   KaliToolsInformationGatheringEnum.lbd: 'lbd',
@@ -85,16 +85,16 @@ Map<KaliToolsInformationGatheringEnum, String> _kaliToolsInformationGatheringMap
   KaliToolsInformationGatheringEnum.onesixtyone: 'onesixtyone',
   KaliToolsInformationGatheringEnum.p0f: 'p0f',
   KaliToolsInformationGatheringEnum.qsslcaudit: 'qsslcaudit',
-  KaliToolsInformationGatheringEnum.recon_ng: 'recon-ng',
+  KaliToolsInformationGatheringEnum.reconNg: 'recon-ng',
   KaliToolsInformationGatheringEnum.smbmap: 'smbmap',
-  KaliToolsInformationGatheringEnum.smtp_user_enum: 'smtp-user-enum',
+  KaliToolsInformationGatheringEnum.smtpUserEnum: 'smtp-user-enum',
   KaliToolsInformationGatheringEnum.snmpcheck: 'snmpcheck',
   KaliToolsInformationGatheringEnum.ssldump: 'ssldump',
   KaliToolsInformationGatheringEnum.sslh: 'sslh',
   KaliToolsInformationGatheringEnum.sslscan: 'sslscan',
   KaliToolsInformationGatheringEnum.sslyze: 'sslyze',
   KaliToolsInformationGatheringEnum.swaks: 'swaks',
-  KaliToolsInformationGatheringEnum.thc_ipv6: 'thc-ipv6',
+  KaliToolsInformationGatheringEnum.thcIpv6: 'thc-ipv6',
   KaliToolsInformationGatheringEnum.theharvester: 'theharvester',
   KaliToolsInformationGatheringEnum.tlssled: 'tlssled',
   KaliToolsInformationGatheringEnum.twofi: 'twofi',
@@ -113,7 +113,7 @@ extension KaliToolsInformationGatheringEnumExt on KaliToolsInformationGatheringE
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsInformationGatheringToInstall() =>
+Future<void> selectKaliToolsInformationGatheringToInstall() =>
     selectToolsToInstall<KaliToolsInformationGatheringEnum>(
       groupName: 'kali-tools-information-gathering',
       values: KaliToolsInformationGatheringEnum.values,

@@ -1,4 +1,4 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsGPUEnum { oclgausscrack, truecrack }
 
@@ -16,7 +16,7 @@ extension KaliToolsGPUEnumExt on KaliToolsGPUEnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsGPUToInstall() => selectToolsToInstall<KaliToolsGPUEnum>(
+Future<void> selectKaliToolsGPUToInstall() => selectToolsToInstall<KaliToolsGPUEnum>(
   groupName: 'kali-tools-gpu',
   values: KaliToolsGPUEnum.values,
   packageNameGetter: (e) => e.package,

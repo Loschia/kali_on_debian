@@ -1,4 +1,4 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsDetectEnum { grokevt, sentrypeer }
 
@@ -16,9 +16,8 @@ extension KaliToolsDetectEnumExt on KaliToolsDetectEnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsDetectToInstall() =>
-    selectToolsToInstall<KaliToolsDetectEnum>(
-      groupName: 'kali-tools-detect',
-      values: KaliToolsDetectEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsDetectToInstall() => selectToolsToInstall<KaliToolsDetectEnum>(
+  groupName: 'kali-tools-detect',
+  values: KaliToolsDetectEnum.values,
+  packageNameGetter: (e) => e.package,
+);

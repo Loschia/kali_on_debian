@@ -1,4 +1,4 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsWirelessEnum { rfcat, rfkill, sakis3g, spectools, wireshark }
 
@@ -19,9 +19,8 @@ extension KaliToolsWirelessEnumExt on KaliToolsWirelessEnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsWirelessToInstall() =>
-    selectToolsToInstall<KaliToolsWirelessEnum>(
-      groupName: 'kali-tools-wireless',
-      values: KaliToolsWirelessEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsWirelessToInstall() => selectToolsToInstall<KaliToolsWirelessEnum>(
+  groupName: 'kali-tools-wireless',
+  values: KaliToolsWirelessEnum.values,
+  packageNameGetter: (e) => e.package,
+);

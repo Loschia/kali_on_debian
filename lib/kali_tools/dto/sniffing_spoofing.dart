@@ -1,4 +1,4 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsSniffingSpoofingEnum {
   above,
@@ -7,15 +7,15 @@ enum KaliToolsSniffingSpoofingEnum {
   dnschef,
   driftnet,
   dsniff,
-  ettercap_graphical_ettercap_text_only,
-  ferret_sidejack,
+  ettercapGraphicalEttercapTextOnly,
+  ferretSidejack,
   fiked,
-  hamster_sidejack,
+  hamsterSidejack,
   hexinject,
-  isr_evilgrade,
+  isrEvilgrade,
   macchanger,
   mitmproxy,
-  netsniff_ng,
+  netsniffNg,
   rebind,
   responder,
   sniffjoke,
@@ -23,7 +23,7 @@ enum KaliToolsSniffingSpoofingEnum {
   sslsplit,
   tcpflow,
   tcpreplay,
-  wifi_honey,
+  wifiHoney,
   wireshark,
   yersinia,
 }
@@ -35,16 +35,16 @@ Map<KaliToolsSniffingSpoofingEnum, String> _kaliToolsSniffingSpoofingMap = {
   KaliToolsSniffingSpoofingEnum.dnschef: 'dnschef',
   KaliToolsSniffingSpoofingEnum.driftnet: 'driftnet',
   KaliToolsSniffingSpoofingEnum.dsniff: 'dsniff',
-  KaliToolsSniffingSpoofingEnum.ettercap_graphical_ettercap_text_only:
+  KaliToolsSniffingSpoofingEnum.ettercapGraphicalEttercapTextOnly:
       'ettercap-graphical | ettercap-text-only',
-  KaliToolsSniffingSpoofingEnum.ferret_sidejack: 'ferret-sidejack',
+  KaliToolsSniffingSpoofingEnum.ferretSidejack: 'ferret-sidejack',
   KaliToolsSniffingSpoofingEnum.fiked: 'fiked',
-  KaliToolsSniffingSpoofingEnum.hamster_sidejack: 'hamster-sidejack',
+  KaliToolsSniffingSpoofingEnum.hamsterSidejack: 'hamster-sidejack',
   KaliToolsSniffingSpoofingEnum.hexinject: 'hexinject',
-  KaliToolsSniffingSpoofingEnum.isr_evilgrade: 'isr-evilgrade',
+  KaliToolsSniffingSpoofingEnum.isrEvilgrade: 'isr-evilgrade',
   KaliToolsSniffingSpoofingEnum.macchanger: 'macchanger',
   KaliToolsSniffingSpoofingEnum.mitmproxy: 'mitmproxy',
-  KaliToolsSniffingSpoofingEnum.netsniff_ng: 'netsniff-ng',
+  KaliToolsSniffingSpoofingEnum.netsniffNg: 'netsniff-ng',
   KaliToolsSniffingSpoofingEnum.rebind: 'rebind',
   KaliToolsSniffingSpoofingEnum.responder: 'responder',
   KaliToolsSniffingSpoofingEnum.sniffjoke: 'sniffjoke',
@@ -52,7 +52,7 @@ Map<KaliToolsSniffingSpoofingEnum, String> _kaliToolsSniffingSpoofingMap = {
   KaliToolsSniffingSpoofingEnum.sslsplit: 'sslsplit',
   KaliToolsSniffingSpoofingEnum.tcpflow: 'tcpflow',
   KaliToolsSniffingSpoofingEnum.tcpreplay: 'tcpreplay',
-  KaliToolsSniffingSpoofingEnum.wifi_honey: 'wifi-honey',
+  KaliToolsSniffingSpoofingEnum.wifiHoney: 'wifi-honey',
   KaliToolsSniffingSpoofingEnum.wireshark: 'wireshark',
   KaliToolsSniffingSpoofingEnum.yersinia: 'yersinia',
 };
@@ -66,7 +66,7 @@ extension KaliToolsSniffingSpoofingEnumExt on KaliToolsSniffingSpoofingEnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsSniffingSpoofingToInstall() =>
+Future<void> selectKaliToolsSniffingSpoofingToInstall() =>
     selectToolsToInstall<KaliToolsSniffingSpoofingEnum>(
       groupName: 'kali-tools-sniffing-spoofing',
       values: KaliToolsSniffingSpoofingEnum.values,

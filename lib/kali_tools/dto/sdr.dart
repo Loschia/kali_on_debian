@@ -1,33 +1,33 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsSDREnum {
   chirp,
   gnuradio,
-  gqrx_sdr,
-  gr_air_modes,
-  gr_iqbal,
-  gr_osmosdr,
+  gqrxSdr,
+  grAirModes,
+  grIqbal,
+  grOsmosdr,
   hackrf,
   inspectrum,
-  kalibrate_rtl,
-  multimon_ng,
-  uhd_host,
-  uhd_images,
+  kalibrateRtl,
+  multimonNg,
+  uhdHost,
+  uhdImages,
 }
 
 Map<KaliToolsSDREnum, String> _kaliToolsSDRMap = {
   KaliToolsSDREnum.chirp: 'chirp',
   KaliToolsSDREnum.gnuradio: 'gnuradio',
-  KaliToolsSDREnum.gqrx_sdr: 'gqrx-sdr',
-  KaliToolsSDREnum.gr_air_modes: 'gr-air-modes',
-  KaliToolsSDREnum.gr_iqbal: 'gr-iqbal',
-  KaliToolsSDREnum.gr_osmosdr: 'gr-osmosdr',
+  KaliToolsSDREnum.gqrxSdr: 'gqrx-sdr',
+  KaliToolsSDREnum.grAirModes: 'gr-air-modes',
+  KaliToolsSDREnum.grIqbal: 'gr-iqbal',
+  KaliToolsSDREnum.grOsmosdr: 'gr-osmosdr',
   KaliToolsSDREnum.hackrf: 'hackrf',
   KaliToolsSDREnum.inspectrum: 'inspectrum',
-  KaliToolsSDREnum.kalibrate_rtl: 'kalibrate-rtl',
-  KaliToolsSDREnum.multimon_ng: 'multimon-ng',
-  KaliToolsSDREnum.uhd_host: 'uhd-host',
-  KaliToolsSDREnum.uhd_images: 'uhd-images',
+  KaliToolsSDREnum.kalibrateRtl: 'kalibrate-rtl',
+  KaliToolsSDREnum.multimonNg: 'multimon-ng',
+  KaliToolsSDREnum.uhdHost: 'uhd-host',
+  KaliToolsSDREnum.uhdImages: 'uhd-images',
 };
 
 extension KaliToolsSDREnumExt on KaliToolsSDREnum {
@@ -39,7 +39,7 @@ extension KaliToolsSDREnumExt on KaliToolsSDREnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsSDRToInstall() => selectToolsToInstall<KaliToolsSDREnum>(
+Future<void> selectKaliToolsSDRToInstall() => selectToolsToInstall<KaliToolsSDREnum>(
   groupName: 'kali-tools-sdr',
   values: KaliToolsSDREnum.values,
   packageNameGetter: (e) => e.package,

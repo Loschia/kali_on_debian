@@ -1,4 +1,4 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsCryptoStegoEnum { aesfix, aeskeyfind, ccrypt, outguess, steghide, stegsnow }
 
@@ -20,7 +20,7 @@ extension KaliToolsCryptoStegoEnumExt on KaliToolsCryptoStegoEnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsCryptoStegoToInstall() =>
+Future<void> selectKaliToolsCryptoStegoToInstall() =>
     selectToolsToInstall<KaliToolsCryptoStegoEnum>(
       groupName: 'kali-tools-crypto-stego',
       values: KaliToolsCryptoStegoEnum.values,

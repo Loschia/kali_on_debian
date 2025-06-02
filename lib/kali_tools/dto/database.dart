@@ -1,7 +1,7 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsDatabaseEnum {
-  jsql_injection,
+  jsqlInjection,
   mdbtools,
   oscanner,
   sidguesser,
@@ -14,7 +14,7 @@ enum KaliToolsDatabaseEnum {
 }
 
 Map<KaliToolsDatabaseEnum, String> _kaliToolsDatabaseMap = {
-  KaliToolsDatabaseEnum.jsql_injection: 'jsql-injection',
+  KaliToolsDatabaseEnum.jsqlInjection: 'jsql-injection',
   KaliToolsDatabaseEnum.mdbtools: 'mdbtools',
   KaliToolsDatabaseEnum.oscanner: 'oscanner',
   KaliToolsDatabaseEnum.sidguesser: 'sidguesser',
@@ -35,9 +35,8 @@ extension KaliToolsDatabaseEnumExt on KaliToolsDatabaseEnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsDatabaseToInstall() =>
-    selectToolsToInstall<KaliToolsDatabaseEnum>(
-      groupName: 'kali-tools-database',
-      values: KaliToolsDatabaseEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsDatabaseToInstall() => selectToolsToInstall<KaliToolsDatabaseEnum>(
+  groupName: 'kali-tools-database',
+  values: KaliToolsDatabaseEnum.values,
+  packageNameGetter: (e) => e.package,
+);

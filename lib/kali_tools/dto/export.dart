@@ -1,4 +1,5 @@
 export '802_11.dart';
+export 'all.dart';
 export 'bluetooth.dart';
 export 'crypto_stego.dart';
 export 'database.dart';
@@ -24,5 +25,6 @@ export 'social_engineering.dart';
 export 'top10.dart';
 export 'voip.dart';
 export 'vulnerability.dart';
+export 'web.dart';
 export 'windows_resources.dart';
 export 'wireless.dart';

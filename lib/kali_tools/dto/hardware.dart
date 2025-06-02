@@ -1,4 +1,4 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsHardwareEnum {
   binwalk,
@@ -6,11 +6,11 @@ enum KaliToolsHardwareEnum {
   flashrom,
   minicom,
   openocd,
-  qemu_system_x86,
-  qemu_user,
+  qemuSystemX86,
+  qemuUser,
   radare2,
-  rizin_cutter,
-  rz_ghidra,
+  rizinCutter,
+  rzGhidra,
 }
 
 Map<KaliToolsHardwareEnum, String> _kaliToolsHardwareMap = {
@@ -19,11 +19,11 @@ Map<KaliToolsHardwareEnum, String> _kaliToolsHardwareMap = {
   KaliToolsHardwareEnum.flashrom: 'flashrom',
   KaliToolsHardwareEnum.minicom: 'minicom',
   KaliToolsHardwareEnum.openocd: 'openocd',
-  KaliToolsHardwareEnum.qemu_system_x86: 'qemu-system-x86',
-  KaliToolsHardwareEnum.qemu_user: 'qemu-user',
+  KaliToolsHardwareEnum.qemuSystemX86: 'qemu-system-x86',
+  KaliToolsHardwareEnum.qemuUser: 'qemu-user',
   KaliToolsHardwareEnum.radare2: 'radare2',
-  KaliToolsHardwareEnum.rizin_cutter: 'rizin-cutter',
-  KaliToolsHardwareEnum.rz_ghidra: 'rz-ghidra',
+  KaliToolsHardwareEnum.rizinCutter: 'rizin-cutter',
+  KaliToolsHardwareEnum.rzGhidra: 'rz-ghidra',
 };
 
 extension KaliToolsHardwareEnumExt on KaliToolsHardwareEnum {
@@ -35,9 +35,8 @@ extension KaliToolsHardwareEnumExt on KaliToolsHardwareEnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsHardwareToInstall() =>
-    selectToolsToInstall<KaliToolsHardwareEnum>(
-      groupName: 'kali-tools-hardware',
-      values: KaliToolsHardwareEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsHardwareToInstall() => selectToolsToInstall<KaliToolsHardwareEnum>(
+  groupName: 'kali-tools-hardware',
+  values: KaliToolsHardwareEnum.values,
+  packageNameGetter: (e) => e.package,
+);

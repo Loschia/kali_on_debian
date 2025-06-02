@@ -1,16 +1,16 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsIdentifyEnum {
   amass,
   assetfinder,
-  cisco_auditing_tool,
+  ciscoAuditingTool,
   defectdojo,
   exploitdb,
-  hb_honeypot,
-  kali_autopilot,
+  hbHoneypot,
+  kaliAutopilot,
   maltego,
   maryam,
-  nipper_ng,
+  nipperNg,
   osrframework,
   spiderfoot,
   tiger,
@@ -22,14 +22,14 @@ enum KaliToolsIdentifyEnum {
 Map<KaliToolsIdentifyEnum, String> _kaliToolsIdentifyMap = {
   KaliToolsIdentifyEnum.amass: 'amass',
   KaliToolsIdentifyEnum.assetfinder: 'assetfinder',
-  KaliToolsIdentifyEnum.cisco_auditing_tool: 'cisco-auditing-tool',
+  KaliToolsIdentifyEnum.ciscoAuditingTool: 'cisco-auditing-tool',
   KaliToolsIdentifyEnum.defectdojo: 'defectdojo',
   KaliToolsIdentifyEnum.exploitdb: 'exploitdb',
-  KaliToolsIdentifyEnum.hb_honeypot: 'hb-honeypot',
-  KaliToolsIdentifyEnum.kali_autopilot: 'kali-autopilot',
+  KaliToolsIdentifyEnum.hbHoneypot: 'hb-honeypot',
+  KaliToolsIdentifyEnum.kaliAutopilot: 'kali-autopilot',
   KaliToolsIdentifyEnum.maltego: 'maltego',
   KaliToolsIdentifyEnum.maryam: 'maryam',
-  KaliToolsIdentifyEnum.nipper_ng: 'nipper-ng',
+  KaliToolsIdentifyEnum.nipperNg: 'nipper-ng',
   KaliToolsIdentifyEnum.osrframework: 'osrframework',
   KaliToolsIdentifyEnum.spiderfoot: 'spiderfoot',
   KaliToolsIdentifyEnum.tiger: 'tiger',
@@ -47,9 +47,8 @@ extension KaliToolsIdentifyEnumExt on KaliToolsIdentifyEnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsIdentifyToInstall() =>
-    selectToolsToInstall<KaliToolsIdentifyEnum>(
-      groupName: 'kali-tools-identify',
-      values: KaliToolsIdentifyEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsIdentifyToInstall() => selectToolsToInstall<KaliToolsIdentifyEnum>(
+  groupName: 'kali-tools-identify',
+  values: KaliToolsIdentifyEnum.values,
+  packageNameGetter: (e) => e.package,
+);

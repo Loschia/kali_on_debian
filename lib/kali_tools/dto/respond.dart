@@ -1,14 +1,14 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
-enum KaliToolsRespondEnum { ewf_tools, ghidra, guymager, hashrat, impacket_scripts, netsniff_ng }
+enum KaliToolsRespondEnum { ewfTools, ghidra, guymager, hashrat, impacketScripts, netsniffNg }
 
 Map<KaliToolsRespondEnum, String> _kaliToolsRespondMap = {
-  KaliToolsRespondEnum.ewf_tools: 'ewf-tools',
+  KaliToolsRespondEnum.ewfTools: 'ewf-tools',
   KaliToolsRespondEnum.ghidra: 'ghidra',
   KaliToolsRespondEnum.guymager: 'guymager',
   KaliToolsRespondEnum.hashrat: 'hashrat',
-  KaliToolsRespondEnum.impacket_scripts: 'impacket-scripts',
-  KaliToolsRespondEnum.netsniff_ng: 'netsniff-ng',
+  KaliToolsRespondEnum.impacketScripts: 'impacket-scripts',
+  KaliToolsRespondEnum.netsniffNg: 'netsniff-ng',
 };
 
 extension KaliToolsRespondEnumExt on KaliToolsRespondEnum {
@@ -20,9 +20,8 @@ extension KaliToolsRespondEnumExt on KaliToolsRespondEnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsRespondToInstall() =>
-    selectToolsToInstall<KaliToolsRespondEnum>(
-      groupName: 'kali-tools-respond',
-      values: KaliToolsRespondEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsRespondToInstall() => selectToolsToInstall<KaliToolsRespondEnum>(
+  groupName: 'kali-tools-respond',
+  values: KaliToolsRespondEnum.values,
+  packageNameGetter: (e) => e.package,
+);

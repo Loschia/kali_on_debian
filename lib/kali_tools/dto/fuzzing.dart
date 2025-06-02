@@ -1,4 +1,4 @@
-import 'package:kali_on_debian/kali_tools/select_tools_to_install.dart';
+import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
 enum KaliToolsFuzzingEnum { aflpp, sfuzz, spike, wfuzz }
 
@@ -18,9 +18,8 @@ extension KaliToolsFuzzingEnumExt on KaliToolsFuzzingEnum {
   }
 }
 
-Future<ToolSelectionResult> selectKaliToolsFuzzingToInstall() =>
-    selectToolsToInstall<KaliToolsFuzzingEnum>(
-      groupName: 'kali-tools-fuzzing',
-      values: KaliToolsFuzzingEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsFuzzingToInstall() => selectToolsToInstall<KaliToolsFuzzingEnum>(
+  groupName: 'kali-tools-fuzzing',
+  values: KaliToolsFuzzingEnum.values,
+  packageNameGetter: (e) => e.package,
+);
