@@ -1,5 +1,8 @@
 import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
+/// Provides a predefined list for Top 10 Kali tools and a selector to install them interactively.
+///
+/// The enum `KaliToolsTop10Enum` defines supported packages.
 enum KaliToolsTop10Enum {
   aircrackNg,
   burpsuite,
@@ -13,6 +16,7 @@ enum KaliToolsTop10Enum {
   wireshark,
 }
 
+/// The map `_kaliToolsTop10Map` associates each enum with its corresponding package name.
 Map<KaliToolsTop10Enum, String> _kaliToolsTop10Map = {
   KaliToolsTop10Enum.aircrackNg: 'aircrack-ng',
   KaliToolsTop10Enum.burpsuite: 'burpsuite',
@@ -26,6 +30,7 @@ Map<KaliToolsTop10Enum, String> _kaliToolsTop10Map = {
   KaliToolsTop10Enum.wireshark: 'wireshark',
 };
 
+/// The extension `KaliToolsTop10EnumExt` exposes the resolved package name via the package getter.
 extension KaliToolsTop10EnumExt on KaliToolsTop10Enum {
   String get package {
     switch (this) {
@@ -35,6 +40,7 @@ extension KaliToolsTop10EnumExt on KaliToolsTop10Enum {
   }
 }
 
+/// Call `selectKaliToolsTop10ToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-top10` group. Uses `selectToolsToInstall()` with enum values and package names.
 Future<void> selectKaliToolsTop10ToInstall() => selectToolsToInstall<KaliToolsTop10Enum>(
   groupName: 'kali-tools-top10',
   values: KaliToolsTop10Enum.values,

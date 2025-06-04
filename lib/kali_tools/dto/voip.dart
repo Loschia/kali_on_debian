@@ -1,5 +1,8 @@
 import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
+/// Provides a predefined list of Kali voip-related tools and a selector to install them interactively.
+///
+/// The enum `KaliToolsVOIPEnum` defines supported packages.
 enum KaliToolsVOIPEnum {
   enumiax,
   iaxflood,
@@ -21,6 +24,7 @@ enum KaliToolsVOIPEnum {
   wireshark,
 }
 
+/// The map `_kaliToolsVOIPMap` associates each enum with its corresponding package name.
 Map<KaliToolsVOIPEnum, String> _kaliToolsVOIPMap = {
   KaliToolsVOIPEnum.enumiax: 'enumiax',
   KaliToolsVOIPEnum.iaxflood: 'iaxflood',
@@ -42,6 +46,7 @@ Map<KaliToolsVOIPEnum, String> _kaliToolsVOIPMap = {
   KaliToolsVOIPEnum.wireshark: 'wireshark',
 };
 
+/// The extension `KaliToolsVOIPEnumExt` exposes the resolved package name via the package getter.
 extension KaliToolsVOIPEnumExt on KaliToolsVOIPEnum {
   String get package {
     switch (this) {
@@ -51,6 +56,7 @@ extension KaliToolsVOIPEnumExt on KaliToolsVOIPEnum {
   }
 }
 
+/// Call `selectKaliToolsVOIPToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-voip` group. Uses `selectToolsToInstall()` with enum values and package names.
 Future<void> selectKaliToolsVOIPToInstall() => selectToolsToInstall<KaliToolsVOIPEnum>(
   groupName: 'kali-tools-voip',
   values: KaliToolsVOIPEnum.values,

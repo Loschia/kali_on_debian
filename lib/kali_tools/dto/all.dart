@@ -1,5 +1,8 @@
 import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
+/// Provides a predefined list of all Kali tools and a selector to install them interactively.
+///
+/// The enum `KaliToolAllEnum` defines supported packages.
 enum KaliToolAllEnum {
   above,
   aesfix,
@@ -13,7 +16,8 @@ enum KaliToolAllEnum {
   apacheUsers,
   apktool,
   armitage,
-  arpingIputilsArping,
+  arping,
+  iputilsArping,
   asleap,
   assetfinder,
   autopsy,
@@ -88,7 +92,8 @@ enum KaliToolAllEnum {
   edbDebugger,
   enum4linux,
   enumiax,
-  ettercapGraphicalEttercapTextOnly,
+  ettercapGraphical,
+  ettercapTextOnly,
   ewfTools,
   exe2hexbat,
   exifprobe,
@@ -375,7 +380,8 @@ enum KaliToolAllEnum {
   unicornscan,
   uniscan,
   unixPrivescCheck,
-  unrarUnar,
+  unrar,
+  unar,
   upxUcl,
   urlcrazy,
   veil,
@@ -409,6 +415,7 @@ enum KaliToolAllEnum {
   zenmap,
 }
 
+/// The map `_kaliToolAllMap` associates each enum with its corresponding package name.
 Map<KaliToolAllEnum, String> _kaliToolAllMap = {
   KaliToolAllEnum.above: 'above',
   KaliToolAllEnum.aesfix: 'aesfix',
@@ -422,7 +429,8 @@ Map<KaliToolAllEnum, String> _kaliToolAllMap = {
   KaliToolAllEnum.apacheUsers: 'apache-users',
   KaliToolAllEnum.apktool: 'apktool',
   KaliToolAllEnum.armitage: 'armitage',
-  KaliToolAllEnum.arpingIputilsArping: 'arping | iputils-arping',
+  KaliToolAllEnum.arping: 'arping',
+  KaliToolAllEnum.iputilsArping: 'iputils-arping',
   KaliToolAllEnum.asleap: 'asleap',
   KaliToolAllEnum.assetfinder: 'assetfinder',
   KaliToolAllEnum.autopsy: 'autopsy',
@@ -497,7 +505,8 @@ Map<KaliToolAllEnum, String> _kaliToolAllMap = {
   KaliToolAllEnum.edbDebugger: 'edb-debugger',
   KaliToolAllEnum.enum4linux: 'enum4linux',
   KaliToolAllEnum.enumiax: 'enumiax',
-  KaliToolAllEnum.ettercapGraphicalEttercapTextOnly: 'ettercap-graphical | ettercap-text-only',
+  KaliToolAllEnum.ettercapGraphical: 'ettercap-graphical',
+  KaliToolAllEnum.ettercapTextOnly: 'ettercap-text-only',
   KaliToolAllEnum.ewfTools: 'ewf-tools',
   KaliToolAllEnum.exe2hexbat: 'exe2hexbat',
   KaliToolAllEnum.exifprobe: 'exifprobe',
@@ -784,7 +793,8 @@ Map<KaliToolAllEnum, String> _kaliToolAllMap = {
   KaliToolAllEnum.unicornscan: 'unicornscan',
   KaliToolAllEnum.uniscan: 'uniscan',
   KaliToolAllEnum.unixPrivescCheck: 'unix-privesc-check',
-  KaliToolAllEnum.unrarUnar: 'unrar | unar',
+  KaliToolAllEnum.unrar: 'unrar',
+  KaliToolAllEnum.unar: 'unar',
   KaliToolAllEnum.upxUcl: 'upx-ucl',
   KaliToolAllEnum.urlcrazy: 'urlcrazy',
   KaliToolAllEnum.veil: 'veil',
@@ -818,6 +828,7 @@ Map<KaliToolAllEnum, String> _kaliToolAllMap = {
   KaliToolAllEnum.zenmap: 'zenmap',
 };
 
+/// The extension `KaliToolAllExt` exposes the resolved package name via the package getter.
 extension KaliToolAllExt on KaliToolAllEnum {
   String get package {
     switch (this) {
@@ -827,6 +838,7 @@ extension KaliToolAllExt on KaliToolAllEnum {
   }
 }
 
+/// Call `selectKaliToolsAllToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-all` group. Uses `selectToolsToInstall()` with enum values and package names.
 Future<void> selectKaliToolsAllToInstall() => selectToolsToInstall<KaliToolAllEnum>(
   groupName: 'kali-tools-all',
   values: KaliToolAllEnum.values,

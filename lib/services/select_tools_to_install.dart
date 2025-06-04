@@ -2,15 +2,20 @@ import 'dart:io';
 
 import 'package:kali_on_debian/exports.dart';
 
-enum ToolSelectionResultType { install, remove, help, back }
-
-class ToolSelectionResult {
-  final ToolSelectionResultType type;
-  final List<String> selected;
-
-  ToolSelectionResult(this.type, [this.selected = const []]);
-}
-
+/// Displays an interactive terminal-based selection menu for a list of tools.
+///
+/// - `groupName`: Descriptive name for the group of tools (used in the title).
+/// - `values`: List of enum values representing tools.
+/// - `packageNameGetter`: Function that returns the package name for each enum value.
+///
+/// Options:
+/// - Select specific indexes (e.g. `0, 2, 5`)
+/// - Ranges supported (e.g. `1-4`)
+/// - Last entries include:
+///   - `Install all` (index = values.length)
+///   - `Remove all` (index = values.length + 1)
+///   - `Back` (index = values.length + 2)
+///   - `Help` (index = values.length + 3)
 Future<void> selectToolsToInstall<T>({
   required String groupName,
   required List<T> values,
@@ -27,7 +32,18 @@ Future<void> selectToolsToInstall<T>({
 
   print('\n$groupName\n');
   for (int i = 0; i < values.length; i++) {
-    print('$i. ${packageNameGetter(values[i])}');
+    String packageText = '$i. ${packageNameGetter(values[i])}';
+    if (i < 10) packageText = ' $packageText';
+    if (i < 100) packageText = ' $packageText';
+
+    packageText += ' ' * (50 - packageText.length);
+    String apt = packageAvailability[packageNameGetter(values[i])]?.apt ?? '';
+    String kali = packageAvailability[packageNameGetter(values[i])]?.kali ?? '';
+    packageText += 'Version:';
+    if (apt.isNotEmpty) packageText += ' APT: $apt';
+    if (kali.isNotEmpty) packageText += ' Kali: $kali';
+
+    print(packageText);
   }
 
   print('$len. Install all');

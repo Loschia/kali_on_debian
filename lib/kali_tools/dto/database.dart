@@ -1,5 +1,8 @@
 import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
+/// Provides a predefined list of Kali database-related tools and a selector to install them interactively.
+///
+/// The enum `KaliToolsDatabaseEnum` defines supported packages.
 enum KaliToolsDatabaseEnum {
   jsqlInjection,
   mdbtools,
@@ -13,6 +16,7 @@ enum KaliToolsDatabaseEnum {
   tnscmd10g,
 }
 
+/// The map `_kaliToolsDatabaseMap` associates each enum with its corresponding package name.
 Map<KaliToolsDatabaseEnum, String> _kaliToolsDatabaseMap = {
   KaliToolsDatabaseEnum.jsqlInjection: 'jsql-injection',
   KaliToolsDatabaseEnum.mdbtools: 'mdbtools',
@@ -26,6 +30,7 @@ Map<KaliToolsDatabaseEnum, String> _kaliToolsDatabaseMap = {
   KaliToolsDatabaseEnum.tnscmd10g: 'tnscmd10g',
 };
 
+/// The extension `KaliToolsDatabaseEnumExt` exposes the resolved package name via the package getter.
 extension KaliToolsDatabaseEnumExt on KaliToolsDatabaseEnum {
   String get package {
     switch (this) {
@@ -35,6 +40,7 @@ extension KaliToolsDatabaseEnumExt on KaliToolsDatabaseEnum {
   }
 }
 
+/// Call `selectKaliToolsDatabaseToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-database` group. Uses `selectToolsToInstall()` with enum values and package names.
 Future<void> selectKaliToolsDatabaseToInstall() => selectToolsToInstall<KaliToolsDatabaseEnum>(
   groupName: 'kali-tools-database',
   values: KaliToolsDatabaseEnum.values,

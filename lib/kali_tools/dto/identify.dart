@@ -1,5 +1,8 @@
 import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
+/// Provides a predefined list of Kali identify-related tools and a selector to install them interactively.
+///
+/// The enum `KaliToolsIdentifyEnum` defines supported packages.
 enum KaliToolsIdentifyEnum {
   amass,
   assetfinder,
@@ -19,6 +22,7 @@ enum KaliToolsIdentifyEnum {
   zaproxy,
 }
 
+/// The map `_kaliToolsIdentifyMap` associates each enum with its corresponding package name.
 Map<KaliToolsIdentifyEnum, String> _kaliToolsIdentifyMap = {
   KaliToolsIdentifyEnum.amass: 'amass',
   KaliToolsIdentifyEnum.assetfinder: 'assetfinder',
@@ -38,6 +42,7 @@ Map<KaliToolsIdentifyEnum, String> _kaliToolsIdentifyMap = {
   KaliToolsIdentifyEnum.zaproxy: 'zaproxy',
 };
 
+/// The extension `KaliToolsIdentifyEnumExt` exposes the resolved package name via the package getter.
 extension KaliToolsIdentifyEnumExt on KaliToolsIdentifyEnum {
   String get package {
     switch (this) {
@@ -47,6 +52,7 @@ extension KaliToolsIdentifyEnumExt on KaliToolsIdentifyEnum {
   }
 }
 
+/// Call `selectKaliToolsIdentifyToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-identify` group. Uses `selectToolsToInstall()` with enum values and package names.
 Future<void> selectKaliToolsIdentifyToInstall() => selectToolsToInstall<KaliToolsIdentifyEnum>(
   groupName: 'kali-tools-identify',
   values: KaliToolsIdentifyEnum.values,

@@ -1,5 +1,8 @@
 import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
+/// Provides a predefined list of Kali web-related tools and a selector to install them interactively.
+///
+/// The enum `KaliToolsWebEnum` defines supported packages.
 enum KaliToolsWebEnum {
   apacheUsers,
   apache2,
@@ -80,6 +83,7 @@ enum KaliToolsWebEnum {
   zaproxy,
 }
 
+/// The map `_kaliToolsWebMap` associates each enum with its corresponding package name.
 Map<KaliToolsWebEnum, String> _kaliToolsWebMap = {
   KaliToolsWebEnum.apacheUsers: 'apache-users',
   KaliToolsWebEnum.apache2: 'apache2',
@@ -160,6 +164,7 @@ Map<KaliToolsWebEnum, String> _kaliToolsWebMap = {
   KaliToolsWebEnum.zaproxy: 'zaproxy',
 };
 
+/// The extension `KaliToolsWebEnumExt` exposes the resolved package name via the package getter.
 extension KaliToolsWebEnumExt on KaliToolsWebEnum {
   String get package {
     switch (this) {
@@ -169,6 +174,7 @@ extension KaliToolsWebEnumExt on KaliToolsWebEnum {
   }
 }
 
+/// Call `selectKaliToolsWebToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-web` group. Uses `selectToolsToInstall()` with enum values and package names.
 Future<void> selectKaliToolsWebToInstall() => selectToolsToInstall<KaliToolsWebEnum>(
   groupName: 'kali-tools-web',
   values: KaliToolsWebEnum.values,

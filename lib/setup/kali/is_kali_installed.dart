@@ -1,5 +1,6 @@
 import 'dart:io';
 
+/// Check if Kali repo is installed by checking if files exist
 Future<bool> isKaliRepoInstalled() async {
   try {
     final repoFile = File('/etc/apt/sources.list.d/kali.list');

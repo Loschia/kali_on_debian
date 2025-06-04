@@ -13,7 +13,7 @@
 
 `kali_on_debian` is a command-line tool that allows you to install Kali Linux hacking tools **selectively** on any Debian-based distribution (Debian, Ubuntu, etc.), **without replacing your desktop environment or altering your core system**.
 
-It provides an **interactive terminal UI** that helps you choose what to install, where to install it from (APT, Flatpak, or Kali’s official repositories), and manages everything for you with minimal risk.
+It provides an **interactive terminal UI** that helps you choose what to install, where to install it from (APT or Kali’s official repositories), and manages everything for you with minimal risk.
 
 You can use the latest compiled version directly (`kali_on_debian.sh`) or run the Dart source code yourself.
 
@@ -57,7 +57,7 @@ sudo dart run bin/main.dart
 ## ✅ Features
 ✅ Interactive selection of tools by category (e.g. 802.11, Bluetooth, etc.)
 
-✅ Supports APT, Flatpak, and Kali official packages
+✅ Supports APT and Kali official packages
 
 ✅ Non-invasive: does not replace or alter your existing desktop environment
 
@@ -80,10 +80,9 @@ You are responsible for your own actions. The author is **not liable for any dam
 | Source        | Description                              |
 | ------------- | ---------------------------------------- |
 | **APT**       | Official Debian repositories (required)  |
-| **Flatpak**   | Installed by the script if not available |
 | **Kali repo** | Installed by the script if not available |
 
-**APT is mandatory and must be functional for the script to work correctly. Flatpak and the Kali repository are added with this script. APT, Flatpak and Kali repo are used only if the user explicitly selects tools from those sources during the interactive session**
+**APT is mandatory and must be functional for the script to work correctly. Kali repository are added with this script. APT and Kali repo are used only if the user explicitly selects tools from those sources during the interactive session**
 
 ---
 
@@ -99,7 +98,6 @@ The project is under active development. Here's what's currently implemented:
 
 ### 🔧 In Progress
 - APT tool installation support
-- Flatpak tool installation support
 - Kali tool installation support
 - Versioning from each package manager
 

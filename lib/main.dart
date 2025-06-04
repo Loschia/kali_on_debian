@@ -5,6 +5,8 @@ void main() async {
   final isReady = await setup();
   if (!isReady) return;
 
+  await checkAllPackageVersions(KaliToolAllEnum.values.map((e) => e.package).toList());
+
   late String choice;
 
   void selectChoice() {
@@ -46,7 +48,7 @@ void main() async {
     '30': () async {}, //todo: install all
     '31': () async {}, //todo: remove all
     '33': () async {
-      help(30);
+      help(30, exit: 'exit');
       selectChoice();
     },
   };
@@ -87,9 +89,9 @@ void main() async {
   }
 }
 
-//todo: implement fetch version APT, Flatpak and Kali
-//todo: implement ~ to mark tools to remove
-//todo: implement apt: flatpak: kali: to select the origin to install
-//todo: implement install by APT, FLATPAK, KALI-REPO
-//todo: implement remove by APT, FLATPAK, KALI-REPO
 //todo: implement detect packages installed and show them
+//todo: make CLI looks better
+//todo: implement ~ to mark tools to remove
+//todo: implement apt: kali: to select the origin to install
+//todo: implement install by APT, KALI-REPO
+//todo: implement remove by APT, KALI-REPO

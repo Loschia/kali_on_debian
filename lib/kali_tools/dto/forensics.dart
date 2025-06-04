@@ -1,5 +1,8 @@
 import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
+/// Provides a predefined list of Kali forensics-related tools and a selector to install them interactively.
+///
+/// The enum `KaliToolsForensicsEnum` defines supported packages.
 enum KaliToolsForensicsEnum {
   sevenZip,
   afflibTools,
@@ -91,7 +94,8 @@ enum KaliToolsForensicsEnum {
   truecrack,
   undbx,
   unhide,
-  unrarUnar,
+  unrar,
+  unar,
   upxUcl,
   vinetto,
   wce,
@@ -102,6 +106,7 @@ enum KaliToolsForensicsEnum {
   yara,
 }
 
+/// The map `_kaliToolsForensicsMap` associates each enum with its corresponding package name.
 Map<KaliToolsForensicsEnum, String> _kaliToolsForensicsMap = {
   KaliToolsForensicsEnum.sevenZip: '7zip',
   KaliToolsForensicsEnum.afflibTools: 'afflib-tools',
@@ -193,7 +198,8 @@ Map<KaliToolsForensicsEnum, String> _kaliToolsForensicsMap = {
   KaliToolsForensicsEnum.truecrack: 'truecrack',
   KaliToolsForensicsEnum.undbx: 'undbx',
   KaliToolsForensicsEnum.unhide: 'unhide',
-  KaliToolsForensicsEnum.unrarUnar: 'unrar | unar',
+  KaliToolsForensicsEnum.unrar: 'unrar',
+  KaliToolsForensicsEnum.unar: 'unar',
   KaliToolsForensicsEnum.upxUcl: 'upx-ucl',
   KaliToolsForensicsEnum.vinetto: 'vinetto',
   KaliToolsForensicsEnum.wce: 'wce',
@@ -204,6 +210,7 @@ Map<KaliToolsForensicsEnum, String> _kaliToolsForensicsMap = {
   KaliToolsForensicsEnum.yara: 'yara',
 };
 
+/// The extension `KaliToolsForensicsEnumExt` exposes the resolved package name via the package getter.
 extension KaliToolsForensicsEnumExt on KaliToolsForensicsEnum {
   String get package {
     switch (this) {
@@ -213,6 +220,7 @@ extension KaliToolsForensicsEnumExt on KaliToolsForensicsEnum {
   }
 }
 
+/// Call `selectKaliToolsForensicsToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-forensics` group. Uses `selectToolsToInstall()` with enum values and package names.
 Future<void> selectKaliToolsForensicsToInstall() => selectToolsToInstall<KaliToolsForensicsEnum>(
   groupName: 'kali-tools-forensics',
   values: KaliToolsForensicsEnum.values,

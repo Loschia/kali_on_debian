@@ -1,5 +1,8 @@
 import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
+/// Provides a predefined list of Kali sdr-related tools and a selector to install them interactively.
+///
+/// The enum `KaliToolsSDREnum` defines supported packages.
 enum KaliToolsSDREnum {
   chirp,
   gnuradio,
@@ -15,6 +18,7 @@ enum KaliToolsSDREnum {
   uhdImages,
 }
 
+/// The map `_kaliToolsSDRMap` associates each enum with its corresponding package name.
 Map<KaliToolsSDREnum, String> _kaliToolsSDRMap = {
   KaliToolsSDREnum.chirp: 'chirp',
   KaliToolsSDREnum.gnuradio: 'gnuradio',
@@ -30,6 +34,7 @@ Map<KaliToolsSDREnum, String> _kaliToolsSDRMap = {
   KaliToolsSDREnum.uhdImages: 'uhd-images',
 };
 
+/// The extension `KaliToolsSDREnumExt` exposes the resolved package name via the package getter.
 extension KaliToolsSDREnumExt on KaliToolsSDREnum {
   String get package {
     switch (this) {
@@ -39,6 +44,7 @@ extension KaliToolsSDREnumExt on KaliToolsSDREnum {
   }
 }
 
+/// Call `selectKaliToolsSDRToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-sdr` group. Uses `selectToolsToInstall()` with enum values and package names.
 Future<void> selectKaliToolsSDRToInstall() => selectToolsToInstall<KaliToolsSDREnum>(
   groupName: 'kali-tools-sdr',
   values: KaliToolsSDREnum.values,

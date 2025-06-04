@@ -1,8 +1,12 @@
 import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
+/// Provides a predefined list of Kali information-gathering-related tools and a selector to install them interactively.
+///
+/// The enum `KaliToolsInformationGatheringEnum` defines supported packages.
 enum KaliToolsInformationGatheringEnum {
   otrace,
-  arpingIputilsArping,
+  arping,
+  iputilsArping,
   braa,
   dmitry,
   dnsenum,
@@ -52,9 +56,11 @@ enum KaliToolsInformationGatheringEnum {
   zenmap,
 }
 
+/// The map `_kaliToolsInformationGatheringMap` associates each enum with its corresponding package name.
 Map<KaliToolsInformationGatheringEnum, String> _kaliToolsInformationGatheringMap = {
   KaliToolsInformationGatheringEnum.otrace: '0trace',
-  KaliToolsInformationGatheringEnum.arpingIputilsArping: 'arping | iputils-arping',
+  KaliToolsInformationGatheringEnum.arping: 'arping',
+  KaliToolsInformationGatheringEnum.iputilsArping: 'iputils-arping',
   KaliToolsInformationGatheringEnum.braa: 'braa',
   KaliToolsInformationGatheringEnum.dmitry: 'dmitry',
   KaliToolsInformationGatheringEnum.dnsenum: 'dnsenum',
@@ -104,6 +110,7 @@ Map<KaliToolsInformationGatheringEnum, String> _kaliToolsInformationGatheringMap
   KaliToolsInformationGatheringEnum.zenmap: 'zenmap',
 };
 
+/// The extension `KaliToolsInformationGatheringEnumExt` exposes the resolved package name via the package getter.
 extension KaliToolsInformationGatheringEnumExt on KaliToolsInformationGatheringEnum {
   String get package {
     switch (this) {
@@ -113,6 +120,7 @@ extension KaliToolsInformationGatheringEnumExt on KaliToolsInformationGatheringE
   }
 }
 
+/// Call `selectKaliToolsInformationGatheringToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-information-gathering` group. Uses `selectToolsToInstall()` with enum values and package names.
 Future<void> selectKaliToolsInformationGatheringToInstall() =>
     selectToolsToInstall<KaliToolsInformationGatheringEnum>(
       groupName: 'kali-tools-information-gathering',

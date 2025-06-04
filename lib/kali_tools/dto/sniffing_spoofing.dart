@@ -1,5 +1,8 @@
 import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
+/// Provides a predefined list of Kali sniffing-spoofing-related tools and a selector to install them interactively.
+///
+/// The enum `KaliToolsSniffingSpoofingEnum` defines supported packages.
 enum KaliToolsSniffingSpoofingEnum {
   above,
   bettercap,
@@ -7,7 +10,8 @@ enum KaliToolsSniffingSpoofingEnum {
   dnschef,
   driftnet,
   dsniff,
-  ettercapGraphicalEttercapTextOnly,
+  ettercapGraphical,
+  ettercapTextOnly,
   ferretSidejack,
   fiked,
   hamsterSidejack,
@@ -28,6 +32,7 @@ enum KaliToolsSniffingSpoofingEnum {
   yersinia,
 }
 
+/// The map `_kaliToolsSniffingSpoofingMap` associates each enum with its corresponding package name.
 Map<KaliToolsSniffingSpoofingEnum, String> _kaliToolsSniffingSpoofingMap = {
   KaliToolsSniffingSpoofingEnum.above: 'above',
   KaliToolsSniffingSpoofingEnum.bettercap: 'bettercap',
@@ -35,8 +40,8 @@ Map<KaliToolsSniffingSpoofingEnum, String> _kaliToolsSniffingSpoofingMap = {
   KaliToolsSniffingSpoofingEnum.dnschef: 'dnschef',
   KaliToolsSniffingSpoofingEnum.driftnet: 'driftnet',
   KaliToolsSniffingSpoofingEnum.dsniff: 'dsniff',
-  KaliToolsSniffingSpoofingEnum.ettercapGraphicalEttercapTextOnly:
-      'ettercap-graphical | ettercap-text-only',
+  KaliToolsSniffingSpoofingEnum.ettercapGraphical: 'ettercap-graphical',
+  KaliToolsSniffingSpoofingEnum.ettercapTextOnly: 'ettercap-text-only',
   KaliToolsSniffingSpoofingEnum.ferretSidejack: 'ferret-sidejack',
   KaliToolsSniffingSpoofingEnum.fiked: 'fiked',
   KaliToolsSniffingSpoofingEnum.hamsterSidejack: 'hamster-sidejack',
@@ -57,6 +62,7 @@ Map<KaliToolsSniffingSpoofingEnum, String> _kaliToolsSniffingSpoofingMap = {
   KaliToolsSniffingSpoofingEnum.yersinia: 'yersinia',
 };
 
+/// The extension `KaliToolsSniffingSpoofingEnumExt` exposes the resolved package name via the package getter.
 extension KaliToolsSniffingSpoofingEnumExt on KaliToolsSniffingSpoofingEnum {
   String get package {
     switch (this) {
@@ -66,6 +72,7 @@ extension KaliToolsSniffingSpoofingEnumExt on KaliToolsSniffingSpoofingEnum {
   }
 }
 
+/// Call `selectKaliToolsSniffingSpoofingToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-sniffing-spoofing` group. Uses `selectToolsToInstall()` with enum values and package names.
 Future<void> selectKaliToolsSniffingSpoofingToInstall() =>
     selectToolsToInstall<KaliToolsSniffingSpoofingEnum>(
       groupName: 'kali-tools-sniffing-spoofing',

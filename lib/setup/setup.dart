@@ -1,11 +1,9 @@
 import 'export.dart';
 
 Future<bool> setup() async {
-  final checkPKG = await checkAptAndFlatpak();
+  final checkPKG = await checkApt();
   if (!checkPKG) {
-    print('To use this script, you need to have APT and Flatpak installed.');
-    print('If you have APT and an internet connection, this tool will install Flatpak.');
-    print('If you still see this error, verify APT functionality and install Flatpak manually.');
+    print('To use this script, you need to have APT installed.');
     return false;
   }
 

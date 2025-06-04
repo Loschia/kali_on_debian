@@ -1,5 +1,8 @@
 import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
+/// Provides a predefined list of Kali 802.11-related tools and a selector to install them interactively.
+///
+/// The enum `KaliTool80211Enum` defines supported packages.
 enum KaliTool80211Enum {
   aircrackNg,
   airgeddon,
@@ -22,6 +25,7 @@ enum KaliTool80211Enum {
   wifite,
 }
 
+/// The map `_kaliTool80211Map` associates each enum with its corresponding package name.
 Map<KaliTool80211Enum, String> _kaliTool80211Map = {
   KaliTool80211Enum.aircrackNg: 'aircrack-ng',
   KaliTool80211Enum.airgeddon: 'airgeddon',
@@ -44,6 +48,7 @@ Map<KaliTool80211Enum, String> _kaliTool80211Map = {
   KaliTool80211Enum.wifite: 'wifite',
 };
 
+/// The extension `KaliToolsWirelessEnumExt` exposes the resolved package name via the package getter.
 extension KaliTool80211Ext on KaliTool80211Enum {
   String get package {
     switch (this) {
@@ -53,6 +58,7 @@ extension KaliTool80211Ext on KaliTool80211Enum {
   }
 }
 
+/// Call `selectKaliTools80211ToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-802-11` group. Uses `selectToolsToInstall()` with enum values and package names.
 Future<void> selectKaliTools80211ToInstall() => selectToolsToInstall<KaliTool80211Enum>(
   groupName: 'kali-tools-802-11',
   values: KaliTool80211Enum.values,

@@ -1,5 +1,8 @@
 import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
+/// Provides a predefined list of Kali passwords-related tools and a selector to install them interactively.
+///
+/// The enum `KaliToolsPasswordsEnum` defines supported packages.
 enum KaliToolsPasswordsEnum {
   cewl,
   chntpw,
@@ -50,6 +53,7 @@ enum KaliToolsPasswordsEnum {
   wordlists,
 }
 
+/// The map `_kaliToolsPasswordsMap` associates each enum with its corresponding package name.
 Map<KaliToolsPasswordsEnum, String> _kaliToolsPasswordsMap = {
   KaliToolsPasswordsEnum.cewl: 'cewl',
   KaliToolsPasswordsEnum.chntpw: 'chntpw',
@@ -100,6 +104,7 @@ Map<KaliToolsPasswordsEnum, String> _kaliToolsPasswordsMap = {
   KaliToolsPasswordsEnum.wordlists: 'wordlists',
 };
 
+/// The extension `KaliToolsPasswordsEnumExt` exposes the resolved package name via the package getter.
 extension KaliToolsPasswordsEnumExt on KaliToolsPasswordsEnum {
   String get package {
     switch (this) {
@@ -109,6 +114,7 @@ extension KaliToolsPasswordsEnumExt on KaliToolsPasswordsEnum {
   }
 }
 
+/// Call `selectKaliToolsPasswordsToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-passwords` group. Uses `selectToolsToInstall()` with enum values and package names.
 Future<void> selectKaliToolsPasswordsToInstall() => selectToolsToInstall<KaliToolsPasswordsEnum>(
   groupName: 'kali-tools-passwords',
   values: KaliToolsPasswordsEnum.values,

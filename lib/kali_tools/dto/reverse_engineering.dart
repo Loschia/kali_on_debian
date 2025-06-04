@@ -1,5 +1,8 @@
 import 'package:kali_on_debian/services/select_tools_to_install.dart';
 
+/// Provides a predefined list of Kali reverse-engineering-related tools and a selector to install them interactively.
+///
+/// The enum `KaliToolsReverseEngineeringEnum` defines supported packages.
 enum KaliToolsReverseEngineeringEnum {
   apktool,
   bytecodeViewer,
@@ -16,6 +19,7 @@ enum KaliToolsReverseEngineeringEnum {
   rzGhidra,
 }
 
+/// The map `_kaliToolsReverseEngineeringMap` associates each enum with its corresponding package name.
 Map<KaliToolsReverseEngineeringEnum, String> _kaliToolsReverseEngineeringMap = {
   KaliToolsReverseEngineeringEnum.apktool: 'apktool',
   KaliToolsReverseEngineeringEnum.bytecodeViewer: 'bytecode-viewer',
@@ -32,6 +36,7 @@ Map<KaliToolsReverseEngineeringEnum, String> _kaliToolsReverseEngineeringMap = {
   KaliToolsReverseEngineeringEnum.rzGhidra: 'rz-ghidra',
 };
 
+/// The extension `KaliToolsReverseEngineeringEnumExt` exposes the resolved package name via the package getter.
 extension KaliToolsReverseEngineeringEnumExt on KaliToolsReverseEngineeringEnum {
   String get package {
     switch (this) {
@@ -41,6 +46,7 @@ extension KaliToolsReverseEngineeringEnumExt on KaliToolsReverseEngineeringEnum 
   }
 }
 
+/// Call `selectKaliToolsReverseEngineeringToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-reverse-engineering` group. Uses `selectToolsToInstall()` with enum values and package names.
 Future<void> selectKaliToolsReverseEngineeringToInstall() =>
     selectToolsToInstall<KaliToolsReverseEngineeringEnum>(
       groupName: 'kali-tools-reverse-engineering',
