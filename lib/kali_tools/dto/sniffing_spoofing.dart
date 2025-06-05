@@ -73,9 +73,8 @@ extension KaliToolsSniffingSpoofingEnumExt on KaliToolsSniffingSpoofingEnum {
 }
 
 /// Call `selectKaliToolsSniffingSpoofingToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-sniffing-spoofing` group. Uses `selectToolsToInstall()` with enum values and package names.
-Future<void> selectKaliToolsSniffingSpoofingToInstall() =>
-    selectToolsToInstall<KaliToolsSniffingSpoofingEnum>(
-      groupName: 'kali-tools-sniffing-spoofing',
-      values: KaliToolsSniffingSpoofingEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsSniffingSpoofingToInstall() => selectToolsToInstall<KaliToolsSniffingSpoofingEnum>(
+  groupName: 'kali-tools-sniffing-spoofing',
+  values: KaliToolsSniffingSpoofingEnum.values,
+  packageNameGetter: (e) => e.package,
+);

@@ -26,9 +26,8 @@ extension KaliToolsCryptoStegoEnumExt on KaliToolsCryptoStegoEnum {
 }
 
 /// Call `selectKaliToolsCryptoStegoToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-crypto-stego` group. Uses `selectToolsToInstall()` with enum values and package names.
-Future<void> selectKaliToolsCryptoStegoToInstall() =>
-    selectToolsToInstall<KaliToolsCryptoStegoEnum>(
-      groupName: 'kali-tools-crypto-stego',
-      values: KaliToolsCryptoStegoEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsCryptoStegoToInstall() => selectToolsToInstall<KaliToolsCryptoStegoEnum>(
+  groupName: 'kali-tools-crypto-stego',
+  values: KaliToolsCryptoStegoEnum.values,
+  packageNameGetter: (e) => e.package,
+);

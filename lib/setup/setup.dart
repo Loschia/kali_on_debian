@@ -10,9 +10,7 @@ Future<bool> setup() async {
   final checkKali = await checkInstalledKali();
   if (!checkKali) {
     print('There was an error while adding the Kali repository.');
-    print(
-      'Make sure you are running this script with sudo and have a working internet connection.',
-    );
+    print('Make sure you are running this script with sudo and have a working internet connection.');
     print('\nTo manually install the Kali repository, follow these steps:');
     print('1. Create the file: /etc/apt/sources.list.d/kali.list');
     print(
@@ -22,9 +20,7 @@ Future<bool> setup() async {
     print('   wget -O /tmp/kali-key.asc https://archive.kali.org/archive-key.asc');
     print('   gpg --dearmor -o /usr/share/keyrings/kali-archive-keyring.gpg /tmp/kali-key.asc');
     print('3. Create the pin file: /etc/apt/preferences.d/kali.pref');
-    print(
-      '   Add the following lines:\n   Package: *\n   Pin: release a=kali-rolling\n   Pin-Priority: 50',
-    );
+    print('   Add the following lines:\n   Package: *\n   Pin: release a=kali-rolling\n   Pin-Priority: 50');
     print('4. Update APT:');
     print('   sudo apt update');
     return false;

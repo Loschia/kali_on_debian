@@ -21,7 +21,8 @@ Future<void> selectToolsToInstall<T>({
   required List<T> values,
   required String Function(T) packageNameGetter,
 }) async {
-  final int len = values.length;
+  final int length = values.length;
+  int lengthNumber = (length + 3).toString().length;
   printTitle();
   late String choice;
 
@@ -32,24 +33,28 @@ Future<void> selectToolsToInstall<T>({
 
   print('\n$groupName\n');
   for (int i = 0; i < values.length; i++) {
-    String packageText = '$i. ${packageNameGetter(values[i])}';
-    if (i < 10) packageText = ' $packageText';
-    if (i < 100) packageText = ' $packageText';
+    PackageVersion version = packageAvailability[packageNameGetter(values[i])]!;
 
+    String packageText = ' ' * (lengthNumber - i.toString().length) + '$i. ${packageNameGetter(values[i])}';
     packageText += ' ' * (50 - packageText.length);
-    String apt = packageAvailability[packageNameGetter(values[i])]?.apt ?? '';
-    String kali = packageAvailability[packageNameGetter(values[i])]?.kali ?? '';
+
     packageText += 'Version:';
-    if (apt.isNotEmpty) packageText += ' APT: $apt';
-    if (kali.isNotEmpty) packageText += ' Kali: $kali';
+    if (version.apt.isNotEmpty) packageText += ' APT: ${version.apt}';
+    if (version.kali.isNotEmpty) packageText += ' Kali: ${version.kali}';
+
+    if (version.installed.isNotEmpty) packageText = '$fontStyleInstalledPackage$packageText$fontStyleReset';
 
     print(packageText);
   }
 
-  print('$len. Install all');
-  print('${len + 1}. Remove all');
-  print('${len + 2}. Back');
-  print('${len + 3}. Help');
+  String spaceLen = ' ' * (lengthNumber - length.toString().length);
+  String spaceLen1 = ' ' * (lengthNumber - (length + 1).toString().length);
+  String spaceLen2 = ' ' * (lengthNumber - (length + 2).toString().length);
+
+  print('$spaceLen$length. Install all');
+  print('$spaceLen1${length + 1}. Remove all');
+  print('$spaceLen2${length + 2}. Back');
+  print('${length + 3}. Help');
 
   while (true) {
     selectChoice();
@@ -57,31 +62,35 @@ Future<void> selectToolsToInstall<T>({
     if (choice.trim().isEmpty) continue;
 
     // Install all
-    if (choice == '$len') {
+    if (choice == '$length') {
       //todo: install all, then reload page with updated UI
       continue;
     }
 
     // Remove all
-    if (choice == '${len + 1}') {
+    if (choice == '${length + 1}') {
       //todo: remove, then reload page with updated UI
       continue;
     }
 
     // Go back
-    if (choice == '${len + 2}') return;
+    if (choice == '${length + 2}') return;
 
     // Help
-    if (choice == '${len + 3}') {
-      help(len);
+    if (choice == '${length + 3}') {
+      help(length);
       selectChoice();
       continue;
     }
 
-    final Set<int> indexes = {};
+    final Set<int> installIndexes = {};
+    final Set<int> removeIndexes = {};
 
     for (var part in choice.split(',')) {
       part = part.trim();
+      final isRemove = part.startsWith('~');
+      part = isRemove ? part.substring(1) : part;
+
       if (part.contains('-')) {
         final rangeParts = part.split('-');
         if (rangeParts.length != 2) continue;
@@ -92,20 +101,21 @@ Future<void> selectToolsToInstall<T>({
         if (start == null || end == null || start > end) continue;
 
         for (int i = start; i <= end; i++) {
-          if (i >= 0 && i < values.length) indexes.add(i);
+          if (i >= 0 && i < values.length) isRemove ? removeIndexes.add(i) : installIndexes.add(i);
         }
       } else {
-        final index = int.tryParse(part);
-        if (index != null && index >= 0 && index < values.length) {
-          indexes.add(index);
-        }
+        final i = int.tryParse(part);
+        if (i != null && i >= 0 && i < values.length) isRemove ? removeIndexes.add(i) : installIndexes.add(i);
       }
     }
 
-    if (indexes.isEmpty) continue;
+    if (installIndexes.isEmpty && removeIndexes.isEmpty) continue;
 
-    final selected = indexes.map((i) => packageNameGetter(values[i])).toList();
-    print('\nTool selezionati: ${selected.join(', ')}\n');
+    final selectedToInstall = installIndexes.map((i) => packageNameGetter(values[i])).toList();
+    final selectedToRemove = removeIndexes.map((i) => packageNameGetter(values[i])).toList();
+
+    print('\nTool install: ${selectedToInstall.join(', ')}\n');
+    print('\nTool remove: ${selectedToRemove.join(', ')}\n');
     //todo: install or remove
 
     continue;

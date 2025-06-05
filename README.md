@@ -61,7 +61,7 @@ sudo dart run bin/main.dart
 
 ✅ Non-invasive: does not replace or alter your existing desktop environment
 
-✅ CLI interface with help, batch selection, and tool descriptions
+✅ CLI interface with help, batch selection, and tool version from APT and/or Kali repo
 
 ✅ Each .sh release is a compiled version of the latest commit
 
@@ -99,7 +99,6 @@ The project is under active development. Here's what's currently implemented:
 ### 🔧 In Progress
 - APT tool installation support
 - Kali tool installation support
-- Versioning from each package manager
 
 > Every `kali_on_debian.sh` you download is automatically compiled from the latest commit, so you can use it directly without needing to compile it yourself.
 

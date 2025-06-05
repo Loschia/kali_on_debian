@@ -3,16 +3,7 @@ import 'package:kali_on_debian/services/select_tools_to_install.dart';
 /// Provides a predefined list of Kali reporting-related tools and a selector to install them interactively.
 ///
 /// The enum `KaliToolsReportingEnum` defines supported packages.
-enum KaliToolsReportingEnum {
-  cutycapt,
-  dradis,
-  eyewitness,
-  faraday,
-  maltego,
-  metagoofil,
-  pipal,
-  recordmydesktop,
-}
+enum KaliToolsReportingEnum { cutycapt, dradis, eyewitness, faraday, maltego, metagoofil, pipal, recordmydesktop }
 
 /// The map `_kaliToolsReportingMap` associates each enum with its corresponding package name.
 Map<KaliToolsReportingEnum, String> _kaliToolsReportingMap = {

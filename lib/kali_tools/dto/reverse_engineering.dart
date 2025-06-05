@@ -47,9 +47,8 @@ extension KaliToolsReverseEngineeringEnumExt on KaliToolsReverseEngineeringEnum 
 }
 
 /// Call `selectKaliToolsReverseEngineeringToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-reverse-engineering` group. Uses `selectToolsToInstall()` with enum values and package names.
-Future<void> selectKaliToolsReverseEngineeringToInstall() =>
-    selectToolsToInstall<KaliToolsReverseEngineeringEnum>(
-      groupName: 'kali-tools-reverse-engineering',
-      values: KaliToolsReverseEngineeringEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsReverseEngineeringToInstall() => selectToolsToInstall<KaliToolsReverseEngineeringEnum>(
+  groupName: 'kali-tools-reverse-engineering',
+  values: KaliToolsReverseEngineeringEnum.values,
+  packageNameGetter: (e) => e.package,
+);

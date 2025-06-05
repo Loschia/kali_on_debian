@@ -43,22 +43,10 @@ Pin-Priority: 50
     }
 
     // Convert ASCII key to binary GPG format
-    ProcessResult convertKey = await Process.run('sudo', [
-      'gpg',
-      '--dearmor',
-      '--output',
-      keyringPath,
-      tempKeyPath,
-    ]);
+    ProcessResult convertKey = await Process.run('sudo', ['gpg', '--dearmor', '--output', keyringPath, tempKeyPath]);
     if (convertKey.exitCode != 0) {
       await Process.run('sudo', ['rm', keyringPath]);
-      convertKey = await Process.run('sudo', [
-        'gpg',
-        '--dearmor',
-        '--output',
-        keyringPath,
-        tempKeyPath,
-      ]);
+      convertKey = await Process.run('sudo', ['gpg', '--dearmor', '--output', keyringPath, tempKeyPath]);
       if (convertKey.exitCode != 0) return false;
     }
 

@@ -50,11 +50,16 @@ PackageVersion getPackageAvailability(String policy) {
 
   // Get installed version of the pkg. The result is an empty String if is not installed
   String installed = '';
-  String installedVersion = resultLines[1].trim().split(' ')[1];
   for (int i = 4; i < resultLines.length; i += 2) {
-    String version = resultLines[i].trim().split(' ')[0];
-    if (installedVersion == version) {
-      installed = version;
+    int priorityVersion = int.tryParse(resultLines[i].trim().split(' ')[0]) ?? 0;
+    if (priorityVersion == 0) {
+      i--;
+      continue;
+    }
+
+    String result = resultLines[i - 1].trim().split(' ')[0];
+    if (result == '***') {
+      installed = resultLines[i - 1].trim().split(' ')[1];
       break;
     }
   }

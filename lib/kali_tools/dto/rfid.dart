@@ -3,16 +3,7 @@ import 'package:kali_on_debian/services/select_tools_to_install.dart';
 /// Provides a predefined list of Kali rfid-related tools and a selector to install them interactively.
 ///
 /// The enum `KaliToolsRFIDEnum` defines supported packages.
-enum KaliToolsRFIDEnum {
-  gnuradio,
-  libfreefareBin,
-  libnfcBin,
-  mfcuk,
-  mfoc,
-  mfterm,
-  proxmark3,
-  rfdump,
-}
+enum KaliToolsRFIDEnum { gnuradio, libfreefareBin, libnfcBin, mfcuk, mfoc, mfterm, proxmark3, rfdump }
 
 /// The map `_kaliToolsRFIDMap` associates each enum with its corresponding package name.
 Map<KaliToolsRFIDEnum, String> _kaliToolsRFIDMap = {

@@ -25,9 +25,8 @@ extension KaliToolsSocialEngineeringEnumExt on KaliToolsSocialEngineeringEnum {
 }
 
 /// Call `selectKaliToolsSocialEngineeringToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-social-engineering` group. Uses `selectToolsToInstall()` with enum values and package names.
-Future<void> selectKaliToolsSocialEngineeringToInstall() =>
-    selectToolsToInstall<KaliToolsSocialEngineeringEnum>(
-      groupName: 'kali-tools-social-engineering',
-      values: KaliToolsSocialEngineeringEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsSocialEngineeringToInstall() => selectToolsToInstall<KaliToolsSocialEngineeringEnum>(
+  groupName: 'kali-tools-social-engineering',
+  values: KaliToolsSocialEngineeringEnum.values,
+  packageNameGetter: (e) => e.package,
+);

@@ -121,9 +121,8 @@ extension KaliToolsInformationGatheringEnumExt on KaliToolsInformationGatheringE
 }
 
 /// Call `selectKaliToolsInformationGatheringToInstall()` to prompt the user to select one or more tools to install from the `kali-tools-information-gathering` group. Uses `selectToolsToInstall()` with enum values and package names.
-Future<void> selectKaliToolsInformationGatheringToInstall() =>
-    selectToolsToInstall<KaliToolsInformationGatheringEnum>(
-      groupName: 'kali-tools-information-gathering',
-      values: KaliToolsInformationGatheringEnum.values,
-      packageNameGetter: (e) => e.package,
-    );
+Future<void> selectKaliToolsInformationGatheringToInstall() => selectToolsToInstall<KaliToolsInformationGatheringEnum>(
+  groupName: 'kali-tools-information-gathering',
+  values: KaliToolsInformationGatheringEnum.values,
+  packageNameGetter: (e) => e.package,
+);
