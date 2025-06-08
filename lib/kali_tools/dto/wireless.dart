@@ -3,10 +3,11 @@ import 'package:kali_on_debian/services/select_tools_to_install.dart';
 /// Provides a predefined list of Kali wireless-related tools and a selector to install them interactively.
 ///
 /// The enum `KaliToolsWirelessEnum` defines supported packages.
-enum KaliToolsWirelessEnum { rfcat, rfkill, sakis3g, spectools, wireshark }
+enum KaliToolsWirelessEnum { netexec, rfcat, rfkill, sakis3g, spectools, wireshark }
 
 /// The map `_kaliToolsWirelessMap` associates each enum with its corresponding package name.
 Map<KaliToolsWirelessEnum, String> _kaliToolsWirelessMap = {
+  KaliToolsWirelessEnum.netexec: 'netexec',
   KaliToolsWirelessEnum.rfcat: 'rfcat',
   KaliToolsWirelessEnum.rfkill: 'rfkill',
   KaliToolsWirelessEnum.sakis3g: 'sakis3g',

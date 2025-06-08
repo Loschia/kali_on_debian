@@ -1,6 +1,6 @@
 name: kali_on_debian
 description: A safe and modular way to install Kali Linux tools on any Debian-based system. Easily install Kali Linux hacking tools on Debian-based systems without breaking your setup.
-version: 0.1.0
+version: 1.0.0
 repository: https://github.com/Loschia/kali_on_debian
 
 environment:

@@ -45,8 +45,8 @@ void main() async {
     '27': selectKaliToolsWindowsResourcesToInstall,
     '28': selectKaliToolsWirelessToInstall,
     '29': selectKaliToolsAllToInstall,
-    '30': () async {}, //todo: install all
-    '31': () async {}, //todo: remove all
+    '30': () async => await installPackages(KaliToolAllEnum.values.map((e) => e.package).toList()),
+    '31': () async => await removePackages(KaliToolAllEnum.values.map((e) => e.package).toList()),
     '33': () async {
       help(30, exit: 'exit');
       selectChoice();
@@ -88,8 +88,3 @@ void main() async {
     } while (true);
   }
 }
-
-//todo: implement apt: kali: to select the origin to install
-//todo: implement install by APT, KALI-REPO
-//todo: implement remove by APT, KALI-REPO
-//todo: make CLI looks better

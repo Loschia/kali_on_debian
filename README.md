@@ -4,6 +4,7 @@
 > 
 > **Easily install Kali Linux hacking tools on Debian-based systems without breaking your setup.**
 
+![Version](https://img.shields.io/github/v/tag/Loschia/kali_on_debian?label=version&sort=semver)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Loschia/kali_on_debian)
 ![License](https://img.shields.io/github/license/Loschia/kali_on_debian)
 
@@ -82,7 +83,7 @@ You are responsible for your own actions. The author is **not liable for any dam
 | **APT**       | Official Debian repositories (required)  |
 | **Kali repo** | Installed by the script if not available |
 
-**APT is mandatory and must be functional for the script to work correctly. Kali repository are added with this script. APT and Kali repo are used only if the user explicitly selects tools from those sources during the interactive session**
+**APT is mandatory and must be functional for the script to work correctly. Kali repository are added with this script. You can choose whether to install packages from Debian APT or Kali repositories, but only one source can be used per command input. If you want to mix sources, run separate commands.**
 
 ---
 
@@ -95,10 +96,10 @@ The project is under active development. Here's what's currently implemented:
 - Support for selection via ranges, help screen, “select all”, and “remove all”
 - Script compiled latest version: `kali_on_debian.sh`
 - Interactive CLI for `kali-tools-*` ✅ (fully implemented)
+- Option to choose installation via Debian or Kali packages ✅
 
 ### 🔧 In Progress
-- APT tool installation support
-- Kali tool installation support
+- Adding other group packages to implement all kali kacking tools
 
 > Every `kali_on_debian.sh` you download is automatically compiled from the latest commit, so you can use it directly without needing to compile it yourself.
 
@@ -115,7 +116,7 @@ Contributions, feedback, and issues are welcome!
 ## 🧪 Tested On
 - ✅ Debian 12
 - ✅ Ubuntu 22.04
-- ⏳ More distributions coming soon...
+- ⏳ More distributions coming soon... (feel free to report compatibility!)
 
 ---
 

@@ -61,15 +61,29 @@ Future<void> selectToolsToInstall<T>({
 
     if (choice.trim().isEmpty) continue;
 
+    // Check if is kali or debian install
+    bool isKali = true;
+    if (choice.toLowerCase().startsWith('apt:')) {
+      isKali = false;
+      choice = choice.substring(4).trim();
+    } else if (choice.toLowerCase().startsWith('kali:')) {
+      isKali = true;
+      choice = choice.substring(5).trim();
+    } else {
+      choice = choice.trim();
+    }
+
+    if (choice.isEmpty) continue;
+
     // Install all
     if (choice == '$length') {
-      //todo: install all, then reload page with updated UI
+      await installPackages(values.map((e) => packageNameGetter(e)).toList(), isKali: isKali);
       continue;
     }
 
     // Remove all
     if (choice == '${length + 1}') {
-      //todo: remove, then reload page with updated UI
+      await removePackages(values.map((e) => packageNameGetter(e)).toList());
       continue;
     }
 
@@ -114,9 +128,8 @@ Future<void> selectToolsToInstall<T>({
     final selectedToInstall = installIndexes.map((i) => packageNameGetter(values[i])).toList();
     final selectedToRemove = removeIndexes.map((i) => packageNameGetter(values[i])).toList();
 
-    print('\nTool install: ${selectedToInstall.join(', ')}\n');
-    print('\nTool remove: ${selectedToRemove.join(', ')}\n');
-    //todo: install or remove
+    if (selectedToInstall.isNotEmpty) await installPackages(selectedToInstall, isKali: isKali);
+    if (selectedToRemove.isNotEmpty) await removePackages(selectedToRemove);
 
     continue;
   }
