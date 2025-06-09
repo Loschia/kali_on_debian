@@ -45,9 +45,7 @@ void main() async {
     '27': selectKaliToolsWindowsResourcesToInstall,
     '28': selectKaliToolsWirelessToInstall,
     '29': selectKaliToolsAllToInstall,
-    '30': () async => await installPackages(KaliToolAllEnum.values.map((e) => e.package).toList()),
-    '31': () async => await removePackages(KaliToolAllEnum.values.map((e) => e.package).toList()),
-    '33': () async {
+    '31': () async {
       help(30, exit: 'exit');
       selectChoice();
     },
@@ -56,28 +54,27 @@ void main() async {
   while (true) {
     printTitle();
     print('\nSelect a Kali Tools group to install:');
-    print(' 0. 802.11                        17. Respond');
-    print(' 1. Bluetooth                     18. Reverse Engineering');
-    print(' 2. Crypto stego                  19. RFID');
-    print(' 3. Database                      20. SDR');
-    print(' 4. Detect                        21. Sniffing Spoofing');
-    print(' 5. Exploitation                  22. Social Engineering');
-    print(' 6. Forensics                     23. Top 10');
-    print(' 7. Fuzzing                       24. VOIP');
-    print(' 8. GPU                           25. Vulnerability');
-    print(' 9. Hardware                      26. Web');
-    print('10. Identify                      27. Windows Resources');
-    print('11. Information Gathering         28. Wireless');
-    print('12. Passwords                     29. All');
-    print('13. Post Exploitation             30. Install all');
-    print('14. Protect                       31. Remove all');
-    print('15. Recover                       32. Exit');
-    print('16. Reporting                     33. Help');
+    print(' 0. 802.11                        16. Reporting');
+    print(' 1. Bluetooth                     17. Respond');
+    print(' 2. Crypto stego                  18. Reverse Engineering');
+    print(' 3. Database                      19. RFID');
+    print(' 4. Detect                        20. SDR');
+    print(' 5. Exploitation                  21. Sniffing Spoofing');
+    print(' 6. Forensics                     22. Social Engineering');
+    print(' 7. Fuzzing                       23. Top 10');
+    print(' 8. GPU                           24. VOIP');
+    print(' 9. Hardware                      25. Vulnerability');
+    print('10. Identify                      26. Web');
+    print('11. Information Gathering         27. Windows Resources');
+    print('12. Passwords                     28. Wireless');
+    print('13. Post Exploitation             29. All');
+    print('14. Protect                       30. Exit');
+    print('15. Recover                       31. Help');
 
     do {
       selectChoice();
 
-      if (choice == '32') {
+      if (choice == '30') {
         return;
       } else if (toolActions.containsKey(choice)) {
         await toolActions[choice]!();
